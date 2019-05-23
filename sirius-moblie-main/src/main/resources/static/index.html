@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>实验室后台管理系统</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="libs/jquery.min.js"></script>
+    <script type="text/javascript" src="labweb/jquery-3.3.1.min.js"></script>
+    <style type="text/css">
+        .rightmenu {
+            font-size:12px;
+            padding:5px 10px;
+            border-radius: 2px;
+        }
+        .rightmenu li{
+            line-height:20px;
+            cursor: pointer;
+        }
+        ul.layui-tab-title li:first-child i {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo" style="color:#0064b6;font-weight: bold;font-size: 20px">
+            实验室后台管理系统
+        </div>
+        <!-- 水平导航栏 -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item" id="myToggleButtom"><i class="layui-icon layui-icon-shrink-right" style="font-size: 25px; color: #0064b6;"></i></li>
+            <li class="layui-nav-item"><a href="">实验室首页</a></li>
+            <li class="layui-nav-item">
+                <a>分组列表</a>
+                <dl class="layui-nav-child" id="dept-panel">
+                    <dd><a href='javascript:;' class="site-url" data-title="" data-id="7" data-url="pages/User/deptView.html?name=asd&password=123456">人员列表</a></dd>
+                    <dd><a href='javascript:;' class="site-url" data-title="" data-id="8" data-url="pages/User/deptView.html?name=dsad&password=1223123">人员列表</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href='javascript:;' class="site-url" data-title="文件管理" data-id="10" data-url="pages/File/fileList.html">文件管理</a></li>
+            <li class="layui-nav-item"><a href='javascript:;' class="site-url" data-title="公告管理" data-id="11" data-url="pages/Notice/noticeList.html">公告管理</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">会议管理系统</a></dd>
+                    <dd><a href="">科研论文管理</a></dd>
+                    <dd><a href="">科研过程管理</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href='javascript:;' class="site-url" onclick="verify()">系统日志</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <!--a href="javascript:;">
+                    <img src="../img/head1.jpg" class="layui-nav-img">
+                    五月巡抚司zZy丶
+                </a-->
+                <a href="javascript:;" class="admin-header-user">
+                    <img />
+                    <span></span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href='javascript: ;' class="site-url" data-title="个人资料" data-id="999" data-url="pages/User/updateHeadImg.html">个人资料</a></dd>
+                    <dd><a href='javascript:;' class="site-url" data-title="未读信息" data-id="998" data-url="pages/Notice/noticeList.html">未读信息<i class="fa fa-envelope-o" aria-hidden="true" title="公告" unreadNotice></i></a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="javascript:;" onclick="logout()">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black" id="admin-side">
+        <div class="layui-side-scroll">
+            <!-- 垂直导航 -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="left">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">网站维护</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" class="site-url" data-title="内容管理" data-id="4" data-url="pages/Edit/edit.html">内容维护</a></dd>
+                        <dd><a href="javascript:;" class="site-url" data-title="文章列表" data-id="5" data-url="pages/Edit/articlelist.html">文章列表</a></dd>
+                        <dd><a href="javascript:;" class="site-url" data-title="首页管理" data-id="6" data-url="pages/Edit/indexmanager.html">首页管理</a></dd>
+                        <dd><a href="javascript:;" class="site-url" data-title="视频列表" data-id="15" data-url="pages/Edit/videolist.html">视频推送</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">人员管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href='javascript:;' class="site-url" data-title="人员列表" data-id="1" data-url="pages/User/UserView.html">人员列表</a></dd>
+                        <dd><a href='javascript:;' class="site-url" data-title="增加用户" data-id="2" data-url="pages/User/UserInfo.html">增加用户</a></dd>
+                        <dd><a href="javascript:;" class="site-url" data-title="开发历史" data-id="16" data-url="pages/dashboard.html">开发历程</a></dd>
+                        <dd><a href="javascript:;" class="site-url" data-title="swagger接口文档" data-id="9" data-url="../swagger-ui.html">swagger接口文档</a></dd>
+                        <dd><a href="javascript:;">其他管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">授权管理</a></li>
+                <li class="layui-nav-item"><a href="">作业管理系统</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--div class="layui-body"-->
+        <!-- 内容主体区域 -->
+        <!--div style="padding:0 auto;border-top: 5px solid #0064B6;height: 100%;width: 100%">内容主体区域</div-->
+    <div class="layui-body" style="bottom: 0;" id="admin-body">
+        <div class="layui-tab admin-nav-card layui-tab-brief" lay-allowClose="true" lay-filter="content" >
+            <ul class="layui-tab-title">
+                <li class="layui-this">
+                    <i class="fa fa-dashboard" aria-hidden="true"></i>
+                    <cite>Home</cite>
+                </li>
+            </ul>
+
+            <ul class="layui-bg-blue rightmenu" style="display: none;position: absolute;">
+                <li data-type="closethis">关闭当前</li>
+                <li data-type="closeall">关闭所有</li>
+            </ul>
+
+            <div class="layui-tab-content" style="min-height: 780px; padding: 5px 0 0 0">
+                <div class="layui-tab-item layui-show" style="padding: 0">
+                    <iframe width="100%" height=775px src="pages/User/UserView.html"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!/div-->
+
+    <div class="layui-footer"  id="admin-footer" style="text-align: center;color:#0064B6;font-size: 15px;">
+        <!-- 底部固定区域 -->
+        © 数字媒体实验室
+    </div>
+</div>
+<script src="layui/layui.js"></script>
+<script type="text/javascript" src="js/labjs.js"></script>
+<script type="text/javascript" src="js/verify.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    console.log(returnCitySN);
+    let userip = returnCitySN.cip;
+    $.ajax({
+        url: "/user/ip?ip=" + userip,
+        type: 'get',
+        success : function (res) {
+          console.log("获取成功");
+          if(res == false){
+              console.log("异常登录");
+              localStorage.removeItem("token");
+          }else {
+              console.log("正常登录");
+          }
+        },
+        error : function () {
+            console.log("获取失败");
+
+        }
+
+    })
+</script>
+
+<script type="text/javascript">
+
+
+    $.ajaxSetup({
+        cache: false,
+        headers: {
+            "token" : localStorage.getItem("token")
+        },
+        error : function(xhr, textStatus, errorThrown) {
+            var msg = xhr.responseText;
+            var response = JSON.parse(msg);
+            var code = response.code;
+            var message = response.message;
+            if (code == 400) {
+                layer.msg(message);
+            } else if (code == 401) {
+                console.log("something wrong");
+                localStorage.removeItem("token");
+                location.href = '/rolelogin.html';
+            } else if (code == 403) {
+                console.log("未授权:" + message);
+                layer.msg('未授权');
+            } else if (code == 500) {
+                layer.msg('系统错误：' + message);
+            }
+        }
+    });
+
+    layui.use('element', function(){
+        var element = layui.element;
+        var active={
+            tabAdd:function(url,id,name){
+                element.tabAdd('content',{
+                    title:name,
+                    content:'<iframe data-frameid="'+id+'" scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;"></iframe>',
+                    id:id
+                });
+                rightMenu();
+                iframeWH();
+            },
+            tabChange:function(id){
+                element.tabChange('content',id);
+            },
+            tabDelete:function(id){
+                element.tabDelete('content',id);
+            },
+            tabDeleteAll:function(ids){
+                $.each(ids,function(index,item){
+                    element.tabDelete('content',item);
+                });
+            }
+        };
+
+        $('#myToggleButtom').on('click', function() {
+            var sideWidth = $('#admin-side').width();
+            if(sideWidth === 200) {
+                $('#admin-body').animate({
+                    left: '0'
+                });
+                $('#admin-footer').animate({
+                    left: '0'
+                });
+                $('#admin-side').animate({
+                    width: '0'
+                });
+            } else {
+                $('#admin-body').animate({
+                    left: '200px'
+                });
+                $('#admin-footer').animate({
+                    left: '200px'
+                });
+                $('#admin-side').animate({
+                    width: '200px'
+                });
+            }
+        });
+
+        $(".site-url").on('click',function(){
+            var nav=$(this);
+            var length = $("ul.layui-tab-title li").length;
+            if(length<=0){
+                active.tabAdd(nav.attr("data-url"),nav.attr("data-id"),nav.attr("data-title"));
+            }else{
+                var isData=false;
+                $.each($("ul.layui-tab-title li"),function(){
+                    if($(this).attr("lay-id")==nav.attr("data-id")){
+                        isData=true;
+                    }
+                });
+                if(isData==false){
+                    active.tabAdd(nav.attr("data-url"),nav.attr("data-id"),nav.attr("data-title"));
+                }
+                active.tabChange(nav.attr("data-id"));
+            }
+        });
+
+        function rightMenu(){
+            //右击弹出
+            $(".layui-tab-title li").on('contextmenu',function(e){
+                var menu=$(".rightmenu");
+                menu.find("li").attr('data-id',$(this).attr("lay-id"));
+                l = e.clientX;
+                t = e.clientY;
+                menu.css({ left:l, top:t}).show();
+                return false;
+            });
+            //左键点击隐藏
+            $("body,.layui-tab-title li").click(function(){
+                $(".rightmenu").hide();
+            });
+        }
+        $(".rightmenu li").click(function(){
+            if($(this).attr("data-type")=="closethis"){
+                active.tabDelete($(this).attr("data-id"));
+            }else if($(this).attr("data-type")=="closeall"){
+                var tabtitle = $(".layui-tab-title li");
+                var ids = new Array();
+                tabtitle.each(function(i){
+                    ids.push($(this).attr("lay-id"));
+                });
+                //如果关闭所有 ，即将所有的lay-id放进数组，执行tabDeleteAll
+                active.tabDeleteAll(ids);
+            }
+            $('.rightmenu').hide(); //最后再隐藏右键菜单
+        });
+        function iframeWH(){
+            var H = $(window).height()-80;
+            $("iframe").css("height",H+"px");
+        }
+        $(window).resize(function(){
+            iframeWH();
+        });
+
+        $(function() {
+            $.ajax({
+                type: "GET",
+                headers: {
+                    "token":localStorage.getItem("token")
+                },
+                url: "dept/selectAll",
+                dataType: "text",
+                success: function(res) {
+                    console.log(res);
+                    console.log(typeof(res));
+                    //var data = res.result;
+                    //console.log(data);
+                    var str = '';
+                    var data = JSON.stringify(res);
+                    // 输出的i与obj分别为下标与单个的对象
+                    $.each(JSON.parse(res), function(i, obj) {  //<dd><a href='javascript:;' class="site-url" data-title="" data-id="7" data-url="../pages/User/deptView.html?name=asd&password=123456">人员列表</a></dd>
+                        // console.log(i);
+                        // console.log(obj);
+                        str += '<dd>';
+                        str += '<a href=\'javascript:;\' class=\"site-url\" data-title=\"' + obj.deptname + '\"  data-id=\"' +(999-i)+ '\"  data-url=\"pages/User/deptView.html?deptname=' + obj.deptname + '\">';
+                        str += obj.deptname;
+                        str += '</a>';
+                        str += '</dd>';
+                    });
+                    $("#dept-panel").append(str);
+                    $(".site-url").on('click',function(){
+                        var nav=$(this);
+                        var length = $("ul.layui-tab-title li").length;
+                        if(length<=0){
+                            active.tabAdd(nav.attr("data-url"),nav.attr("data-id"),nav.attr("data-title"));
+                        }else{
+                            var isData=false;
+                            $.each($("ul.layui-tab-title li"),function(){
+                                if($(this).attr("lay-id")==nav.attr("data-id")){
+                                    isData=true;
+                                }
+                            });
+                            if(isData==false){
+                                active.tabAdd(nav.attr("data-url"),nav.attr("data-id"),nav.attr("data-title"));
+                            }
+                            active.tabChange(nav.attr("data-id"));
+                        }
+                    });
+                },
+                error:function () {
+                    alert("请求分组列表异常！");
+                }
+            });
+
+        });
+    });
+
+    showUnreadNotice();
+    function showUnreadNotice(){
+        $.ajax({
+            type : 'get',
+            url : '/notices/count-unread',
+            success : function(data) {
+                $("[unreadNotice]").each(function(){
+                    if(data>0){
+                        $(this).html("<span class='layui-badge'>"+data+"</span>");
+                    }else{
+                        $(this).html("");
+                    }
+                });
+
+            }
+        });
+    }
+
+    function logout(){
+        $.ajax({
+            type : 'get',
+            url : '/logout',
+            success : function(data) {
+                localStorage.removeItem("token");
+                location.href='/rolelogin.html';
+            }
+        });
+    }
+
+    //读取头像
+    showLoginInfo();
+    function showLoginInfo(){
+        $.ajax({
+            type : 'get',
+            url : '/user/current',
+            async : false,
+            success : function(data) {
+                $(".admin-header-user span").text(data.nickname);
+
+                var pro = window.location.protocol;
+                var host = window.location.host;
+                var domain = pro + "//" + host;
+
+                var sex = data.sex;
+                var url = data.headImgUrl;
+                if(url == null || url == ""){
+                    if(sex == 1){
+                        url = "/img/head.jpg";
+                    } else {
+                        url = "/img/head.jpg";
+                    }
+
+                    url = domain + url;
+                } else {
+                    url = domain + "/statics" + url;
+                }
+                var img = $(".admin-header-user img");
+                img.attr("src", url);
+            }
+        });
+    }
+</script>
+<!--script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+        element.on('nav(left)', function (elem) {
+            var options = eval('('+elem.context.children[0].dataset.options+')');
+            var url = options.url;
+            var title = options.title;
+            element.tabAdd('content',{
+                title:title,
+                content:'<iframe scrolling="auto" width="100%" height=750px src="../pages/dashboard.html"></iframe>'
+            })
+        })
+
+    });
+
+</script-->
+
+<!--script type="text/javascript">
+    $(function() {
+        $.ajax({
+            type: "GET",
+            url: "dept/selectAll",
+            dataType: "text",
+            success: function(res) {
+                console.log(res);
+                console.log(typeof(res));
+                //var data = res.result;
+                //console.log(data);
+                var str = '';
+                var data = JSON.stringify(res);
+                // 注意：输出的i与obj分别为下标与单个的对象
+                $.each(JSON.parse(res), function(i, obj) {  //<dd><a href='javascript:;' class="site-url" data-title="" data-id="7" data-url="../pages/User/deptView.html?name=asd&password=123456">人员列表</a></dd>
+                    // console.log(i);
+                    // console.log(obj);
+                    str += '<dd>';
+                    str += '<a href=\'javascript:;\' class=\"site-url\" data-title=\"' + obj.deptname + '\"  data-id=\"' +(999-i)+ '\"  data-url=\"../pages/User/deptView.html?deptname=' + obj.deptname + '\">';
+                    str += obj.deptname;
+                    str += '</a>';
+                    str += '</dd>';
+                });
+                $("#dept-panel").append(str);
+                $(".site-url").on('click',function(){
+                    var nav=$(this);
+                    var length = $("ul.layui-tab-title li").length;
+                    if(length<=0){
+                        active.tabAdd(nav.attr("data-url"),nav.attr("data-id"),nav.attr("data-title"));
+                    }else{
+                        var isData=false;
+                        $.each($("ul.layui-tab-title li"),function(){
+                            if($(this).attr("lay-id")==nav.attr("data-id")){
+                                isData=true;
+                            }
+                        });
+                        if(isData==false){
+                            active.tabAdd(nav.attr("data-url"),nav.attr("data-id"),nav.attr("data-title"));
+                        }
+                        active.tabChange(nav.attr("data-id"));
+                    }
+                });
+            },
+            error:function () {
+              alert("请求分组列表异常！");
+            }
+        });
+
+    });
+
+</script-->
+</body>
+</html>

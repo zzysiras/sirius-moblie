@@ -1,0 +1,15 @@
+2019-04-20 01:49:02,247 [http-nio-8081-exec-4] ==>  Preparing: select * from labweb where name = ? 
+2019-04-20 01:49:02,266 [http-nio-8081-exec-4] ==> Parameters: banner(String)
+2019-04-20 01:49:02,299 [http-nio-8081-exec-4] <==      Total: 1
+2019-04-20 01:49:07,256 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from article t 
+2019-04-20 01:49:07,257 [http-nio-8081-exec-3] ==> Parameters: 
+2019-04-20 01:49:07,266 [http-nio-8081-exec-3] <==      Total: 1
+2019-04-20 01:49:07,268 [http-nio-8081-exec-3] ==>  Preparing: select * from article t 
+2019-04-20 01:49:07,269 [http-nio-8081-exec-3] ==> Parameters: 
+2019-04-20 01:49:07,274 [http-nio-8081-exec-3] <==      Total: 3
+2019-04-20 01:49:11,140 [http-nio-8081-exec-7] ==>  Preparing: select count(1) from videolist t 
+2019-04-20 01:49:11,141 [http-nio-8081-exec-7] ==> Parameters: 
+2019-04-20 01:49:11,146 [http-nio-8081-exec-7] <==      Total: 1
+2019-04-20 01:49:11,150 [http-nio-8081-exec-7] ==>  Preparing: select * from videolist t 
+2019-04-20 01:49:11,151 [http-nio-8081-exec-7] ==> Parameters: 
+2019-04-20 01:49:11,155 [http-nio-8081-exec-7] <==      Total: 3

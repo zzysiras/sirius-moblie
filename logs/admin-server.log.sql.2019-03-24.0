@@ -1,0 +1,380 @@
+2019-03-24 15:09:32,126 [http-nio-8081-exec-2] ==>  Preparing: select * from user where id=? 
+2019-03-24 15:09:32,144 [http-nio-8081-exec-2] ==> Parameters: 2018223049266(String)
+2019-03-24 15:09:32,169 [http-nio-8081-exec-2] <==      Total: 1
+2019-03-24 15:09:32,175 [http-nio-8081-exec-2] ==>  Preparing: select distinct permission from permission p inner join role_permission rp on p.id = rp.permissionId inner join user_role ru on ru.roleid = rp.roleid where ru.userid = ? order by p.sort 
+2019-03-24 15:09:32,176 [http-nio-8081-exec-2] ==> Parameters: 2018223049266(String)
+2019-03-24 15:09:32,186 [http-nio-8081-exec-2] <==      Total: 13
+2019-03-24 15:09:32,318 [taskExecutor-1] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 15:09:32,324 [taskExecutor-1] ==> Parameters: 2018223049266(String), 登录(String), true(Boolean), null
+2019-03-24 15:09:32,337 [taskExecutor-1] <==    Updates: 1
+2019-03-24 15:09:32,648 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 15:09:32,649 [http-nio-8081-exec-3] ==> Parameters: 2018223049266(String)
+2019-03-24 15:09:32,659 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 15:09:32,661 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 15:09:32,662 [http-nio-8081-exec-1] ==> Parameters: 2018223049266(String)
+2019-03-24 15:09:32,666 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 15:09:32,668 [http-nio-8081-exec-1] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 15:09:32,668 [http-nio-8081-exec-1] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 15:09:32,670 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:12:33,781 [http-nio-8081-exec-3] ==>  Preparing: select * from user where id=? 
+2019-03-24 17:12:33,800 [http-nio-8081-exec-3] ==> Parameters: 2019223049266(String)
+2019-03-24 17:12:33,812 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 17:12:33,820 [http-nio-8081-exec-3] ==>  Preparing: select distinct permission from permission p inner join role_permission rp on p.id = rp.permissionId inner join user_role ru on ru.roleid = rp.roleid where ru.userid = ? order by p.sort 
+2019-03-24 17:12:33,820 [http-nio-8081-exec-3] ==> Parameters: 2019223049266(String)
+2019-03-24 17:12:33,824 [http-nio-8081-exec-3] <==      Total: 13
+2019-03-24 17:12:33,974 [taskExecutor-1] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 17:12:33,978 [taskExecutor-1] ==> Parameters: 2019223049266(String), 登录(String), true(Boolean), null
+2019-03-24 17:12:33,984 [taskExecutor-1] <==    Updates: 1
+2019-03-24 17:12:34,314 [http-nio-8081-exec-5] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:12:34,315 [http-nio-8081-exec-5] ==> Parameters: 2019223049266(String)
+2019-03-24 17:12:34,318 [http-nio-8081-exec-5] <==      Total: 1
+2019-03-24 17:12:34,324 [http-nio-8081-exec-4] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:12:34,325 [http-nio-8081-exec-4] ==> Parameters: 2019223049266(String)
+2019-03-24 17:12:34,327 [http-nio-8081-exec-4] <==      Total: 1
+2019-03-24 17:12:34,329 [http-nio-8081-exec-4] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:12:34,330 [http-nio-8081-exec-4] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:12:34,331 [http-nio-8081-exec-4] <==      Total: 0
+2019-03-24 17:12:34,343 [http-nio-8081-exec-4] ==>  Preparing: insert into user_ip (id, userip) values (?, ?) 
+2019-03-24 17:12:34,345 [http-nio-8081-exec-4] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:12:34,350 [taskExecutor-2] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 17:12:34,352 [taskExecutor-2] ==> Parameters: 2019223049266(String), 退出(String), true(Boolean), null
+2019-03-24 17:12:34,357 [http-nio-8081-exec-4] <==    Updates: 1
+2019-03-24 17:12:34,361 [taskExecutor-3] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 17:12:34,362 [taskExecutor-3] ==> Parameters: 2019223049266(String), 异地登录(String), true(Boolean), null
+2019-03-24 17:12:34,367 [taskExecutor-3] <==    Updates: 1
+2019-03-24 17:12:34,370 [taskExecutor-2] <==    Updates: 1
+2019-03-24 17:13:01,269 [http-nio-8081-exec-3] ==>  Preparing: select * from user where id=? 
+2019-03-24 17:13:01,270 [http-nio-8081-exec-3] ==> Parameters: 2019223049266(String)
+2019-03-24 17:13:01,273 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 17:13:01,274 [http-nio-8081-exec-3] ==>  Preparing: select distinct permission from permission p inner join role_permission rp on p.id = rp.permissionId inner join user_role ru on ru.roleid = rp.roleid where ru.userid = ? order by p.sort 
+2019-03-24 17:13:01,276 [http-nio-8081-exec-3] ==> Parameters: 2019223049266(String)
+2019-03-24 17:13:01,278 [http-nio-8081-exec-3] <==      Total: 13
+2019-03-24 17:13:01,392 [taskExecutor-4] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 17:13:01,392 [taskExecutor-4] ==> Parameters: 2019223049266(String), 登录(String), true(Boolean), null
+2019-03-24 17:13:01,401 [taskExecutor-4] <==    Updates: 1
+2019-03-24 17:13:01,734 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:13:01,738 [http-nio-8081-exec-3] ==> Parameters: 2019223049266(String)
+2019-03-24 17:13:01,744 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 17:13:01,745 [http-nio-8081-exec-3] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:13:01,746 [http-nio-8081-exec-3] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:13:01,747 [http-nio-8081-exec-9] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:13:01,749 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 17:13:01,750 [http-nio-8081-exec-9] ==> Parameters: 2019223049266(String)
+2019-03-24 17:13:01,769 [http-nio-8081-exec-9] <==      Total: 1
+2019-03-24 17:13:05,274 [http-nio-8081-exec-10] ==>  Preparing: select * from dict t where t.type = ? 
+2019-03-24 17:13:05,276 [http-nio-8081-exec-10] ==> Parameters: noticeStatus(String)
+2019-03-24 17:13:05,283 [http-nio-8081-exec-10] <==      Total: 2
+2019-03-24 17:13:05,403 [http-nio-8081-exec-2] ==>  Preparing: select count(1) from notice t 
+2019-03-24 17:13:05,405 [http-nio-8081-exec-2] ==> Parameters: 
+2019-03-24 17:13:05,407 [http-nio-8081-exec-2] <==      Total: 1
+2019-03-24 17:13:05,411 [http-nio-8081-exec-2] ==>  Preparing: select * from notice t order by updateTime desc, title desc limit ?, ? 
+2019-03-24 17:13:05,412 [http-nio-8081-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:13:05,417 [http-nio-8081-exec-2] <==      Total: 6
+2019-03-24 17:13:18,916 [http-nio-8081-exec-8] ==>  Preparing: select count(1) from file_info t 
+2019-03-24 17:13:18,917 [http-nio-8081-exec-8] ==> Parameters: 
+2019-03-24 17:13:18,923 [http-nio-8081-exec-8] <==      Total: 1
+2019-03-24 17:13:18,925 [http-nio-8081-exec-8] ==>  Preparing: select * from file_info t order by updateTime desc limit ?, ? 
+2019-03-24 17:13:18,926 [http-nio-8081-exec-8] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:13:18,933 [http-nio-8081-exec-8] <==      Total: 10
+2019-03-24 17:13:25,482 [http-nio-8081-exec-1] ==>  Preparing: select * from file_info t where t.id = ? 
+2019-03-24 17:13:25,483 [http-nio-8081-exec-1] ==> Parameters: 586f83f4ccf0267cfeca056497370652(String)
+2019-03-24 17:13:25,485 [http-nio-8081-exec-1] <==      Total: 0
+2019-03-24 17:13:25,492 [http-nio-8081-exec-1] ==>  Preparing: insert into file_info(id, contentType, size, path, url, type, createTime, updateTime, originName) values(?, ?, ?, ?, ?, ?, now(), now(), ?) 
+2019-03-24 17:13:25,493 [taskExecutor-5] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 17:13:25,493 [taskExecutor-5] ==> Parameters: 2019223049266(String), 上传文件(String), true(Boolean), QQ截图20181107103528.png(String)
+2019-03-24 17:13:25,493 [http-nio-8081-exec-1] ==> Parameters: 586f83f4ccf0267cfeca056497370652(String), image/png(String), 241677(Long), e:/files/2019/03/24/586f83f4ccf0267cfeca056497370652.png(String), /2019/03/24/586f83f4ccf0267cfeca056497370652.png(String), 1(Integer), QQ截图20181107103528.png(String)
+2019-03-24 17:13:25,502 [taskExecutor-5] <==    Updates: 1
+2019-03-24 17:13:25,503 [http-nio-8081-exec-1] <==    Updates: 1
+2019-03-24 17:13:25,504 [taskExecutor-6] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 17:13:25,506 [taskExecutor-6] ==> Parameters: 2019223049266(String), 文件上传(String), true(Boolean), null
+2019-03-24 17:13:25,512 [taskExecutor-6] <==    Updates: 1
+2019-03-24 17:13:25,527 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from file_info t 
+2019-03-24 17:13:25,527 [http-nio-8081-exec-3] ==> Parameters: 
+2019-03-24 17:13:25,529 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 17:13:25,531 [http-nio-8081-exec-3] ==>  Preparing: select * from file_info t order by updateTime desc limit ?, ? 
+2019-03-24 17:13:25,533 [http-nio-8081-exec-3] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:13:25,539 [http-nio-8081-exec-3] <==      Total: 10
+2019-03-24 17:32:32,819 [http-nio-8081-exec-4] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:32:32,829 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:32:32,861 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String)
+2019-03-24 17:32:32,862 [http-nio-8081-exec-4] ==> Parameters: 2019223049266(String)
+2019-03-24 17:32:32,884 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:32:32,884 [http-nio-8081-exec-4] <==      Total: 1
+2019-03-24 17:32:32,887 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:32:32,890 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:32:32,901 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:32:34,330 [http-nio-8081-exec-7] ==>  Preparing: select count(1) from syslogs t left join user u on u.id = t.id 
+2019-03-24 17:32:34,331 [http-nio-8081-exec-7] ==> Parameters: 
+2019-03-24 17:32:34,333 [http-nio-8081-exec-7] <==      Total: 1
+2019-03-24 17:32:34,337 [http-nio-8081-exec-7] ==>  Preparing: select t.*, u.username from syslogs t left join user u on u.id = t.id order by createTime desc limit ?, ? 
+2019-03-24 17:32:34,338 [http-nio-8081-exec-7] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:32:34,347 [http-nio-8081-exec-7] <==      Total: 7
+2019-03-24 17:34:10,806 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:34:10,809 [http-nio-8081-exec-2] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:34:10,837 [http-nio-8081-exec-1] ==> Parameters: 2019223049266(String)
+2019-03-24 17:34:10,837 [http-nio-8081-exec-2] ==> Parameters: 2019223049266(String)
+2019-03-24 17:34:10,852 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:34:10,852 [http-nio-8081-exec-2] <==      Total: 1
+2019-03-24 17:34:10,855 [http-nio-8081-exec-1] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:34:10,856 [http-nio-8081-exec-1] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:34:10,860 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:34:11,903 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from syslogs t left join user u on u.id = t.id 
+2019-03-24 17:34:11,904 [http-nio-8081-exec-1] ==> Parameters: 
+2019-03-24 17:34:11,906 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:34:11,910 [http-nio-8081-exec-1] ==>  Preparing: select t.*, u.username from syslogs t left join user u on u.id = t.id order by createTime desc limit ?, ? 
+2019-03-24 17:34:11,911 [http-nio-8081-exec-1] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:34:11,919 [http-nio-8081-exec-1] <==      Total: 7
+2019-03-24 17:36:35,435 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:36:35,444 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:36:35,478 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String)
+2019-03-24 17:36:35,478 [http-nio-8081-exec-3] ==> Parameters: 2019223049266(String)
+2019-03-24 17:36:35,502 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 17:36:35,502 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:36:35,504 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:36:35,505 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:36:35,509 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:36:36,902 [http-nio-8081-exec-6] ==>  Preparing: select count(1) from syslogs t left join user u on u.id = t.id 
+2019-03-24 17:36:36,903 [http-nio-8081-exec-6] ==> Parameters: 
+2019-03-24 17:36:36,907 [http-nio-8081-exec-6] <==      Total: 1
+2019-03-24 17:36:36,912 [http-nio-8081-exec-6] ==>  Preparing: select t.*, u.username from syslogs t left join user u on u.id = t.id order by createTime desc limit ?, ? 
+2019-03-24 17:36:36,913 [http-nio-8081-exec-6] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:36:36,926 [http-nio-8081-exec-6] <==      Total: 7
+2019-03-24 17:37:04,138 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:37:04,142 [http-nio-8081-exec-7] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:37:04,174 [http-nio-8081-exec-1] ==> Parameters: 2019223049266(String)
+2019-03-24 17:37:04,174 [http-nio-8081-exec-7] ==> Parameters: 2019223049266(String)
+2019-03-24 17:37:04,189 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:37:04,189 [http-nio-8081-exec-7] <==      Total: 1
+2019-03-24 17:37:04,192 [http-nio-8081-exec-1] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:37:04,194 [http-nio-8081-exec-1] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:37:04,199 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:37:07,620 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from syslogs t left join user u on u.id = t.id 
+2019-03-24 17:37:07,621 [http-nio-8081-exec-1] ==> Parameters: 
+2019-03-24 17:37:07,623 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:37:07,627 [http-nio-8081-exec-1] ==>  Preparing: select t.*, u.username from syslogs t left join user u on u.id = t.id order by createTime desc limit ?, ? 
+2019-03-24 17:37:07,628 [http-nio-8081-exec-1] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:37:07,635 [http-nio-8081-exec-1] <==      Total: 7
+2019-03-24 17:38:54,290 [http-nio-8081-exec-6] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:38:54,292 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:38:54,320 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String)
+2019-03-24 17:38:54,320 [http-nio-8081-exec-6] ==> Parameters: 2019223049266(String)
+2019-03-24 17:38:54,335 [http-nio-8081-exec-6] <==      Total: 1
+2019-03-24 17:38:54,335 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:38:54,337 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:38:54,339 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:38:54,343 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:38:55,539 [http-nio-8081-exec-4] ==>  Preparing: select count(1) from syslogs t left join user u on u.id = t.id 
+2019-03-24 17:38:55,540 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-24 17:38:55,542 [http-nio-8081-exec-4] <==      Total: 1
+2019-03-24 17:38:55,545 [http-nio-8081-exec-4] ==>  Preparing: select t.*, u.username from syslogs t left join user u on u.id = t.id order by createTime desc limit ?, ? 
+2019-03-24 17:38:55,546 [http-nio-8081-exec-4] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:38:55,554 [http-nio-8081-exec-4] <==      Total: 7
+2019-03-24 17:47:14,326 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:47:14,327 [http-nio-8081-exec-5] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:47:14,353 [http-nio-8081-exec-5] ==> Parameters: 2019223049266(String)
+2019-03-24 17:47:14,362 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String)
+2019-03-24 17:47:14,371 [http-nio-8081-exec-5] <==      Total: 1
+2019-03-24 17:47:14,371 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:47:14,374 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:47:14,375 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String), 182.148.32.209(String)
+2019-03-24 17:47:14,381 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:47:15,673 [http-nio-8081-exec-2] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 17:47:15,674 [http-nio-8081-exec-2] ==> Parameters: 
+2019-03-24 17:47:15,675 [http-nio-8081-exec-2] <==      Total: 1
+2019-03-24 17:47:15,678 [http-nio-8081-exec-2] ==>  Preparing: select t.*, u.username from syslogs t left join `user` u on u.id = t.id order by createTime desc limit ?, ? 
+2019-03-24 17:47:15,679 [http-nio-8081-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:47:15,687 [http-nio-8081-exec-2] <==      Total: 7
+2019-03-24 17:48:40,021 [taskExecutor-1] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 17:48:40,025 [taskExecutor-1] ==> Parameters: 2019223049266(String), 退出(String), true(Boolean), null
+2019-03-24 17:48:40,031 [taskExecutor-1] <==    Updates: 1
+2019-03-24 17:48:47,382 [http-nio-8081-exec-6] ==>  Preparing: select * from user where id=? 
+2019-03-24 17:48:47,383 [http-nio-8081-exec-6] ==> Parameters: 2018223049266(String)
+2019-03-24 17:48:47,386 [http-nio-8081-exec-6] <==      Total: 1
+2019-03-24 17:48:47,392 [http-nio-8081-exec-6] ==>  Preparing: select distinct permission from permission p inner join role_permission rp on p.id = rp.permissionId inner join user_role ru on ru.roleid = rp.roleid where ru.userid = ? order by p.sort 
+2019-03-24 17:48:47,393 [http-nio-8081-exec-6] ==> Parameters: 2018223049266(String)
+2019-03-24 17:48:47,395 [http-nio-8081-exec-6] <==      Total: 13
+2019-03-24 17:48:47,509 [taskExecutor-2] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 17:48:47,509 [taskExecutor-2] ==> Parameters: 2018223049266(String), 登录(String), true(Boolean), null
+2019-03-24 17:48:47,514 [taskExecutor-2] <==    Updates: 1
+2019-03-24 17:48:50,716 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:48:50,717 [http-nio-8081-exec-1] ==> Parameters: 2018223049266(String)
+2019-03-24 17:48:50,719 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:48:50,720 [http-nio-8081-exec-1] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:48:50,721 [http-nio-8081-exec-1] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 17:48:50,722 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:48:50,734 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:48:50,735 [http-nio-8081-exec-3] ==> Parameters: 2018223049266(String)
+2019-03-24 17:48:50,741 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 17:48:55,007 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 17:48:55,008 [http-nio-8081-exec-10] ==> Parameters: 
+2019-03-24 17:48:55,010 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:48:55,011 [http-nio-8081-exec-10] ==>  Preparing: select t.*, u.username from syslogs t left join `user` u on u.id = t.id order by createTime desc limit ?, ? 
+2019-03-24 17:48:55,012 [http-nio-8081-exec-10] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:48:55,021 [http-nio-8081-exec-10] <==      Total: 9
+2019-03-24 17:51:59,161 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:51:59,163 [http-nio-8081-exec-6] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:51:59,195 [http-nio-8081-exec-6] ==> Parameters: 2018223049266(String)
+2019-03-24 17:51:59,195 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String)
+2019-03-24 17:51:59,207 [http-nio-8081-exec-6] <==      Total: 1
+2019-03-24 17:51:59,208 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:51:59,210 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:51:59,215 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 17:51:59,219 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:52:01,103 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 17:52:01,104 [http-nio-8081-exec-3] ==> Parameters: 
+2019-03-24 17:52:01,110 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 17:52:01,114 [http-nio-8081-exec-3] ==>  Preparing: select * from syslogs t order by createTime desc limit ?, ? 
+2019-03-24 17:52:01,115 [http-nio-8081-exec-3] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:52:01,122 [http-nio-8081-exec-3] <==      Total: 9
+2019-03-24 17:53:27,809 [http-nio-8081-exec-6] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:53:27,811 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:53:27,841 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String)
+2019-03-24 17:53:27,841 [http-nio-8081-exec-6] ==> Parameters: 2018223049266(String)
+2019-03-24 17:53:27,856 [http-nio-8081-exec-6] <==      Total: 1
+2019-03-24 17:53:27,858 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:53:27,864 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:53:27,865 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 17:53:27,869 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:53:29,342 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 17:53:29,343 [http-nio-8081-exec-10] ==> Parameters: 
+2019-03-24 17:53:29,345 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:53:29,350 [http-nio-8081-exec-10] ==>  Preparing: select * from syslogs t order by createTime desc limit ?, ? 
+2019-03-24 17:53:29,352 [http-nio-8081-exec-10] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:55:41,543 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:55:41,546 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:55:41,581 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String)
+2019-03-24 17:55:41,581 [http-nio-8081-exec-1] ==> Parameters: 2018223049266(String)
+2019-03-24 17:55:41,596 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:55:41,596 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:55:41,597 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:55:41,600 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 17:55:41,604 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:55:43,326 [http-nio-8081-exec-8] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 17:55:43,327 [http-nio-8081-exec-8] ==> Parameters: 
+2019-03-24 17:55:43,328 [http-nio-8081-exec-8] <==      Total: 1
+2019-03-24 17:55:43,332 [http-nio-8081-exec-8] ==>  Preparing: select * from syslogs t order by createTime desc limit ?, ? 
+2019-03-24 17:55:43,332 [http-nio-8081-exec-8] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:55:43,340 [http-nio-8081-exec-8] <==      Total: 9
+2019-03-24 17:57:04,565 [http-nio-8081-exec-7] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:57:04,565 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:57:04,600 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String)
+2019-03-24 17:57:04,600 [http-nio-8081-exec-7] ==> Parameters: 2018223049266(String)
+2019-03-24 17:57:04,616 [http-nio-8081-exec-7] <==      Total: 1
+2019-03-24 17:57:04,619 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:57:04,621 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:57:04,622 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 17:57:04,628 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:57:05,722 [http-nio-8081-exec-7] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 17:57:05,723 [http-nio-8081-exec-7] ==> Parameters: 
+2019-03-24 17:57:05,725 [http-nio-8081-exec-7] <==      Total: 1
+2019-03-24 17:57:05,728 [http-nio-8081-exec-7] ==>  Preparing: select * from syslogs t order by createTime desc limit ?, ? 
+2019-03-24 17:57:05,729 [http-nio-8081-exec-7] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:57:05,738 [http-nio-8081-exec-7] <==      Total: 9
+2019-03-24 17:58:04,442 [http-nio-8081-exec-2] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 17:58:04,444 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 17:58:04,479 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String)
+2019-03-24 17:58:04,485 [http-nio-8081-exec-2] ==> Parameters: 2018223049266(String)
+2019-03-24 17:58:04,499 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:58:04,499 [http-nio-8081-exec-2] <==      Total: 1
+2019-03-24 17:58:04,501 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 17:58:04,503 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 17:58:04,508 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 17:58:05,560 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 17:58:05,561 [http-nio-8081-exec-1] ==> Parameters: 
+2019-03-24 17:58:05,563 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 17:58:05,568 [http-nio-8081-exec-1] ==>  Preparing: select * from syslogs t order by createTime desc limit ?, ? 
+2019-03-24 17:58:05,569 [http-nio-8081-exec-1] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 17:58:05,580 [http-nio-8081-exec-1] <==      Total: 9
+2019-03-24 18:10:56,531 [http-nio-8081-exec-2] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 18:10:56,535 [http-nio-8081-exec-1] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 18:10:56,588 [http-nio-8081-exec-2] ==> Parameters: 2018223049266(String)
+2019-03-24 18:10:56,588 [http-nio-8081-exec-1] ==> Parameters: 2018223049266(String)
+2019-03-24 18:10:56,601 [http-nio-8081-exec-2] <==      Total: 1
+2019-03-24 18:10:56,601 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 18:10:56,603 [http-nio-8081-exec-1] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 18:10:56,605 [http-nio-8081-exec-1] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 18:10:56,610 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 18:10:57,870 [http-nio-8081-exec-8] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 18:10:57,871 [http-nio-8081-exec-8] ==> Parameters: 
+2019-03-24 18:10:57,873 [http-nio-8081-exec-8] <==      Total: 1
+2019-03-24 18:10:57,877 [http-nio-8081-exec-8] ==>  Preparing: select * from syslogs t order by createTime desc limit ?, ? 
+2019-03-24 18:10:57,879 [http-nio-8081-exec-8] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 18:10:57,887 [http-nio-8081-exec-8] <==      Total: 9
+2019-03-24 18:13:51,772 [http-nio-8081-exec-5] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-24 18:13:51,773 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-24 18:13:51,815 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String)
+2019-03-24 18:13:51,815 [http-nio-8081-exec-5] ==> Parameters: 2018223049266(String)
+2019-03-24 18:13:51,833 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 18:13:51,833 [http-nio-8081-exec-5] <==      Total: 1
+2019-03-24 18:13:51,835 [http-nio-8081-exec-10] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-24 18:13:51,837 [http-nio-8081-exec-10] ==> Parameters: 2018223049266(String), 182.148.32.209(String)
+2019-03-24 18:13:51,844 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-24 18:13:54,509 [taskExecutor-1] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 18:13:54,515 [taskExecutor-1] ==> Parameters: 2018223049266(String), 生成邮箱验证码并备份缓存(String), true(Boolean), null
+2019-03-24 18:13:54,520 [taskExecutor-1] <==    Updates: 1
+2019-03-24 18:14:10,459 [taskExecutor-2] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-24 18:14:10,461 [taskExecutor-2] ==> Parameters: 2018223049266(String), 对返回验证码进行确认(String), true(Boolean), null
+2019-03-24 18:14:10,469 [taskExecutor-2] <==    Updates: 1
+2019-03-24 18:14:10,991 [http-nio-8081-exec-5] ==>  Preparing: select count(1) from syslogs t left join `user` u on u.id = t.id 
+2019-03-24 18:14:10,992 [http-nio-8081-exec-5] ==> Parameters: 
+2019-03-24 18:14:10,995 [http-nio-8081-exec-5] <==      Total: 1
+2019-03-24 18:14:11,000 [http-nio-8081-exec-5] ==>  Preparing: select * from syslogs t order by createTime desc limit ?, ? 
+2019-03-24 18:14:11,001 [http-nio-8081-exec-5] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-24 18:14:11,013 [http-nio-8081-exec-5] <==      Total: 10
+2019-03-24 18:20:57,639 [http-nio-8081-exec-1] ==>  Preparing: select * from labweb where name = ? 
+2019-03-24 18:20:57,663 [http-nio-8081-exec-1] ==> Parameters: banner(String)
+2019-03-24 18:20:57,707 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-24 18:21:00,163 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from article t 
+2019-03-24 18:21:00,163 [http-nio-8081-exec-3] ==> Parameters: 
+2019-03-24 18:21:00,169 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-24 18:21:00,172 [http-nio-8081-exec-3] ==>  Preparing: select * from article t 
+2019-03-24 18:21:00,172 [http-nio-8081-exec-3] ==> Parameters: 
+2019-03-24 18:21:00,176 [http-nio-8081-exec-3] <==      Total: 3
+2019-03-24 18:21:09,597 [http-nio-8081-exec-4] ==>  Preparing: select count(1) from videolist t 
+2019-03-24 18:21:09,598 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-24 18:21:09,603 [http-nio-8081-exec-4] <==      Total: 1
+2019-03-24 18:21:09,606 [http-nio-8081-exec-4] ==>  Preparing: select * from videolist t 
+2019-03-24 18:21:09,606 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-24 18:21:09,611 [http-nio-8081-exec-4] <==      Total: 3
+2019-03-24 18:21:11,719 [http-nio-8081-exec-4] ==>  Preparing: select count(1) from article t 
+2019-03-24 18:21:11,720 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-24 18:21:11,722 [http-nio-8081-exec-4] <==      Total: 1
+2019-03-24 18:21:11,723 [http-nio-8081-exec-4] ==>  Preparing: select * from article t 
+2019-03-24 18:21:11,724 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-24 18:21:11,727 [http-nio-8081-exec-4] <==      Total: 3
+2019-03-24 18:21:16,912 [http-nio-8081-exec-9] ==>  Preparing: select * from article where id = ? 
+2019-03-24 18:21:16,914 [http-nio-8081-exec-9] ==> Parameters: 4(Long)
+2019-03-24 18:21:16,916 [http-nio-8081-exec-9] <==      Total: 1
+2019-03-24 18:21:16,996 [http-nio-8081-exec-9] ==>  Preparing: select * from article where id = ? 
+2019-03-24 18:21:16,996 [http-nio-8081-exec-9] ==> Parameters: 4(Long)
+2019-03-24 18:21:16,998 [http-nio-8081-exec-9] <==      Total: 1
+2019-03-24 18:21:19,169 [http-nio-8081-exec-7] ==>  Preparing: select count(1) from article t 
+2019-03-24 18:21:19,170 [http-nio-8081-exec-7] ==> Parameters: 
+2019-03-24 18:21:19,172 [http-nio-8081-exec-7] <==      Total: 1
+2019-03-24 18:21:19,173 [http-nio-8081-exec-7] ==>  Preparing: select * from article t 
+2019-03-24 18:21:19,173 [http-nio-8081-exec-7] ==> Parameters: 
+2019-03-24 18:21:19,176 [http-nio-8081-exec-7] <==      Total: 3
+2019-03-24 18:21:20,461 [http-nio-8081-exec-6] ==>  Preparing: select * from article where id = ? 
+2019-03-24 18:21:20,462 [http-nio-8081-exec-6] ==> Parameters: 5(Long)
+2019-03-24 18:21:20,465 [http-nio-8081-exec-6] <==      Total: 1
+2019-03-24 18:21:20,467 [http-nio-8081-exec-6] ==>  Preparing: select * from article where id = ? 
+2019-03-24 18:21:20,467 [http-nio-8081-exec-6] ==> Parameters: 5(Long)
+2019-03-24 18:21:20,469 [http-nio-8081-exec-6] <==      Total: 1
+2019-03-24 18:21:23,762 [http-nio-8081-exec-8] ==>  Preparing: select count(1) from article t 
+2019-03-24 18:21:23,763 [http-nio-8081-exec-8] ==> Parameters: 
+2019-03-24 18:21:23,765 [http-nio-8081-exec-8] <==      Total: 1
+2019-03-24 18:21:23,766 [http-nio-8081-exec-8] ==>  Preparing: select * from article t 
+2019-03-24 18:21:23,767 [http-nio-8081-exec-8] ==> Parameters: 
+2019-03-24 18:21:23,775 [http-nio-8081-exec-8] <==      Total: 3
+2019-03-24 18:21:29,408 [http-nio-8081-exec-2] ==>  Preparing: select count(1) from article t 
+2019-03-24 18:21:29,409 [http-nio-8081-exec-2] ==> Parameters: 
+2019-03-24 18:21:29,413 [http-nio-8081-exec-2] <==      Total: 1
+2019-03-24 18:21:29,415 [http-nio-8081-exec-2] ==>  Preparing: select * from article t 
+2019-03-24 18:21:29,415 [http-nio-8081-exec-2] ==> Parameters: 
+2019-03-24 18:21:29,417 [http-nio-8081-exec-2] <==      Total: 3
+2019-03-24 18:21:31,141 [http-nio-8081-exec-4] ==>  Preparing: select count(1) from videolist t 
+2019-03-24 18:21:31,142 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-24 18:21:31,144 [http-nio-8081-exec-4] <==      Total: 1
+2019-03-24 18:21:31,146 [http-nio-8081-exec-4] ==>  Preparing: select * from videolist t 
+2019-03-24 18:21:31,146 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-24 18:21:31,148 [http-nio-8081-exec-4] <==      Total: 3

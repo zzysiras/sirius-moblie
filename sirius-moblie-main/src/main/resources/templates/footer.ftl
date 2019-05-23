@@ -1,0 +1,1 @@
+<footer id="labFooter"></footer>

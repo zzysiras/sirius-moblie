@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cesaba.siriusmobliemain.mapper.IndexMapper">
+    <sql id="where">
+        <where>
+            <if test="params.title != null and params.title != ''">
+                and t.title like concat('%', #{params.title}, '%')
+            </if>
+            <if test="params.type != null and params.type != ''">
+                and t.type = #{params.type}
+            </if>
+            <if test="params.writer != null and params.writer != ''">
+                and t.writer = #{params.writer}
+            </if>
+            <if test="params.beginTime != null and params.beginTime != ''">
+                and t.updateTime &gt;= #{params.beginTime}
+            </if>
+            <if test="params.endTime != null and params.endTime != ''">
+                and DATE(t.updateTime) &lt;= #{params.endTime}
+            </if>
+        </where>
+    </sql>
+
+    <select id="countvideo" resultType="int">
+        select count(1) from videolist t
+        <include refid="where" />
+    </select>
+
+    <select id="listvideo" resultType="Video">
+        select * from videolist t
+        <include refid="where" />
+        ${params.orderBy}
+    </select>
+
+
+</mapper>

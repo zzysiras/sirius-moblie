@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cesaba.siriusmobliemain.mapper.UserMapper" >
+    
+    <sql id="Base_Column_List">
+        grade, id, username, fullorpart, acaorpro, major, sex, phonenumber, email, dept, birthday, issuper, status, roleid
+    </sql>
+
+    <resultMap id="result" type="com.cesaba.siriusmobliemain.entity.User">
+        <result property="grade" column="grade" />
+        <result property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="password" column="password"/>
+        <result property="fullorpart" column="fullorpart" />
+        <result property="acaorpro" column="acaorpro" />
+        <result property="major" column="major" />
+        <result property="sex" column="sex" />
+        <result property="phonenumber" column="phonenumber" />
+        <result property="email" column="email" />
+        <result property="dept" column="dept" />
+        <result property="birthday" column="birthday" />
+        <result property="issuper" column="issuper"/>
+        <result property="status" column="status"/>
+        <result property="roleid" column="roleid"/>
+    </resultMap>
+
+    <select id="selectAllUser" resultMap="result">
+        select
+        <include refid="Base_Column_List" />
+        from user
+    </select>
+
+    <insert id="insertUser" parameterType="com.cesaba.siriusmobliemain.entity.User">
+    insert into user (grade, id, username, password, fullorpart, acaorpro, major, sex, phonenumber, email, dept, birthday, issuper)
+    values(
+      #{grade,jdbcType=VARCHAR},
+      #{id,jdbcType=VARCHAR},
+      #{username,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR},
+      #{fullorpart,jdbcType=VARCHAR},
+      #{acaorpro,jdbcType=VARCHAR},
+      #{major,jdbcType=VARCHAR},
+      #{sex,jdbcType=CHAR},
+      #{phonenumber,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR},
+      #{dept,jdbcType=VARCHAR},
+      #{birthday,jdbcType=VARCHAR},
+      #{issuper,jdbcType=VARCHAR}
+      )
+     </insert>
+
+    <delete id="deleteUserById" parameterType="java.lang.String" >
+    delete from user
+    where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <update id="updateUserById" parameterType="com.cesaba.siriusmobliemain.entity.User" >
+    update user
+    set grade = #{grade,jdbcType=VARCHAR},
+      id = #{id,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      fullorpart = #{fullorpart,jdbcType=VARCHAR},
+      acaorpro = #{acaorpro,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      phonenumber = #{phonenumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      issuper = #{issuper,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateDept" parameterType="java.lang.String" >
+    update user
+    set dept = #{dept,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectById" resultType="User" parameterType="java.lang.String" >
+        select * from user
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <update id="update">
+        update user t
+        <set>
+                headImgUrl = #{headImgUrl},
+        </set>
+        where t.id = #{id}
+    </update>
+        
+        
+
+    
+</mapper>

@@ -1,0 +1,294 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+li {
+    list-style-type: none;
+}
+
+#Container {
+    border:1px solid rgba(0,0,0,0);
+    height: calc(100%);
+    width: calc(70%);
+    margin: 0 auto;
+}
+
+
+
+.top-nav > li + li {
+     display:flex;
+     justify-content:flex-end;
+     color:#cccccc;
+     content: "|";
+     padding:0 5px;
+     float: right;
+ }
+
+
+
+ #header {
+     background-image: url("../img/nav-img2.png");
+     width: 100%;
+     height: 150px;
+     z-index: 0;
+     font-size: 40px;
+     color:#000000;
+     text-align: center;
+ }
+
+#content {
+    z-index: 1;
+    width: 100%;
+    height: 60px;
+    background-color: hsla(0,0%,100%,.5);
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    margin:0 auto;
+}
+
+#content:after {
+    background-color: rgba(255,255,255,0.4);
+    filter: blur(5px);
+}
+
+#content::after {
+     background-image: url("../img/nav-img2.png");
+     background-position: center top;
+     background-size: cover;
+     background-attachment: fixed;
+     -webkit-filter: blur(20px);
+     -moz-filter: blur(20px);
+     -ms-filter: blur(20px);
+     -o-filter: blur(20px);
+     filter: blur(20px);
+ }-->
+
+
+.logomask{
+    height: 50px;
+}
+
+
+.mainNavigate {
+
+    background-color:#0064b6;
+    border-radius: 0 0 4px 4px;
+    background-size: cover;
+    z-index: 2;
+
+}
+
+.showUI {
+
+    width:100%;
+    height: 600px;
+    border: 1px solid red;
+
+}
+
+.banner{
+
+    width: 916px;
+    height: 550px;
+    margin: 25px auto 25px 25px;
+    border: 1px solid purple;
+    position: relative;
+    overflow: hidden;
+    float: left;
+
+}
+
+
+.ban-image{
+    position:absolute;
+    width: 916px;
+    height: 550px;
+    padding-left: 0;
+    border: 1px solid blue;
+}
+
+.banner ul{
+    position: relative;
+    width: 3664px;
+    height: 550px;
+    right: 0;
+    margin-left: -40px;
+}
+
+.banner ul li{
+
+    height: 550px;
+    float: left;
+
+}
+
+
+.btn-left,.btn-right{
+    position:absolute;
+    top:50%;
+    width: 50px;
+    margin-top: -30px;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-left{
+    left: 0;
+}
+
+.btn-right{
+    right: 0;
+}
+
+.tab {
+    position:absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tab ul li{
+
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    color: black;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tab ul li.on{
+    background-color: #8c8c8c;
+    opacity: 0.8;
+}
+
+.rightCarousel {
+    width: 300px;
+    height: 550px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    margin-left: 20px;
+    float: right;
+}
+
+.carousel{
+    width: 300px;
+    height: 550px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 40px;
+    margin-left: 20px;
+    float: right;
+}
+
+
+.clickBtn {
+
+}
+.bottomContainer{
+    width:100%;
+    height: 600px;
+    border: 1px solid #0064b6;
+
+}
+
+.sideTxt {
+
+    position: absolute;
+    height: 550px;
+    width: 920px;
+    margin: 20px 20px auto 20px;
+}
+
+.sidePattern {
+    position: relative;
+    height: 80px;
+    width: 300px;
+    margin: 20px 24px auto 20px;
+    background-color: #e8e8e8;
+    font-size: 15px;
+    color: #0064b6;
+    float: right;
+    padding: 15px;
+
+}
+
+.sideTxt ul{
+    width: 920px;
+    height: 100px;
+
+}
+
+.sideTxt ul li{
+    width: 920px;
+    height: 100px;
+    padding: 0;
+    margin: 30px 0 30px -38px;
+    float: left;
+}
+
+.itemPic{
+    width: 120px;
+    height: 100px;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    padding: 10px;
+    text-align: center;
+    color: #0064b6;
+    border: 4px solid #0064b6;
+    margin-right: 10px;
+
+}
+
+.pagination {
+    position: relative;
+    left: 20%;
+    top:90%;
+    float: bottom;
+    width: 60%;
+    height: 30px;
+    background-color: #8c8c8c;
+    text-align: center;
+
+}
+
+
+
+#searchBox {
+    position: absolute;
+    margin-left: 1000px;
+    margin-top: 6px;
+
+}
+
+.texPattern {
+    color: white;
+}
+
+.texPattern:hover{
+    color: #0064b6;
+}
+
+#labFooter{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: #0064b6;
+    margin-top: 50px;
+    bottom: 0;
+}

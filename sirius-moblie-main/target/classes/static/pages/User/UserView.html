@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!--html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"-->
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+    <script src="../../libs/jquery.min.js"></script>
+    <script type="text/javascript" src="../../labweb/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../../layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../js/labjs.js"></script>
+    <script src="../../labweb/vue.js" type="text/javascript"></script>
+    <script src="../../libs/vue.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
+        <div class="layui-colla-content layui-show"><script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <!--<!--a href='javascript:;' class="layui-btn layui-btn-sm site-url"  id="addUser" data-title="增加用户" data-id="2" data-url="UserInfo.html">添加用户<--/a-->
+                <button class="layui-btn layui-btn-sm" lay-event="addDept">添加分组</button>
+                <button class="layui-btn layui-btn-sm" lay-event="sendMessage">发送消息</button>
+                <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+                <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+                <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="setPassword">设置密码</button>
+            </div>
+        </script>
+
+            <script type="text/html" id="barDemo">
+                <a class="layui-btn layui-btn-xs" lay-event="edit">更新</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
+
+            <script src="../../layui/layui.js" charset="utf-8"></script>
+
+        </div>
+
+
+
+
+
+
+<script>
+
+
+
+    layui.use('element', function(){
+        var element = layui.element;
+        var active={
+            tabAdd:function(url,id,name){
+                element.tabAdd('content',{
+                    title:name,
+                    content:'<iframe data-frameid="'+id+'" scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;"></iframe>',
+                    id:id
+                });
+                rightMenu();
+                iframeWH();
+            },
+            tabChange:function(id){
+                element.tabChange('content',id);
+            },
+            tabDelete:function(id){
+                element.tabDelete('content',id);
+            },
+            tabDeleteAll:function(ids){
+                $.each(ids,function(index,item){
+                    element.tabDelete('content',item);
+                });
+            }
+        };
+
+        //…
+    });
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({                        //headers ?????????????????????????????????????????????????????????
+            headers: {
+                "token":localStorage.getItem("token")
+            },
+            elem: '#test'
+            ,url:'/query/user/json'
+            ,toolbar: '#toolbarDemo'
+            //,contentType:'application/json'
+            ,title: '用户数据表'
+            ,cellMinWidth:100
+            /*,data: [{
+                "grade": "2018"
+                ,"id": "2018223049266"
+                ,"username": "张中洋"
+                ,"fullorpart":"非全"
+                ,"acaorpro":"专硕"
+                ,"major":"软件工程"
+                ,"sex": "男"
+                ,"phonenumber": "13228172552"
+                ,"email": "zzysiras@foxmail.com"
+                ,"dept":"XX开发组"
+                ,"issuper": "是"
+            },{
+                "grade": "2018"
+                ,"id": "20182230XXXXX"
+                ,"username": "尹浩"
+                ,"fullorpart":"全日"
+                ,"acaorpro":"专硕"
+                ,"major":"计算机技术"
+                ,"sex": "男"
+                ,"phonenumber": "XXXXXXXXXXXX"
+                ,"email": "XXXXXXXXXXX@foxmail.com"
+                ,"dept":"XX开发组"
+                ,"issuper": "否"
+            }]*/
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{field:'grade',title:'年级',fixed:'left',width:100, edit: 'text',sort:true,unresize: true}
+                ,{field:'id', title:'学号/工号',width:150,unresize: true}
+                ,{field:'username', title:'姓名',width:100, edit: 'text',unresize: true}
+                ,{field:'fullorpart', title:'全日/非全',width:100, edit: 'text',unresize: true}
+                ,{field:'acaorpro', title:'学硕/专硕',width:100, edit: 'text',unresize: true}
+                ,{field:'major', title:'专业', edit: 'text',width:150,}
+                ,{field:'sex', title:'性别',width:100, edit: 'text',unresize: true}
+                ,{field:'phonenumber',title:'联系电话',width:150, edit: 'text',unresize: true}
+                ,{field:'email', title:'邮箱', width:200, edit:'text',}
+                ,{field:'dept', title:'所属分组', edit: 'text'}
+                ,{field:'issuper',title:'超级用户',width:100, edit: 'text',unresize: true}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+            ]]
+            ,page: true
+        });
+
+        //头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+                case 'addDept':
+                    var token = localStorage.getItem("token");
+                    console.log(token);
+                    var data = checkStatus.data;
+                    if(data.length == 0){
+                        layer.msg('请至少选择一名小组成员！');
+                    }
+                    else {
+                        layer.prompt({
+                            formType: 2,
+                            value: '舆情系统开发小组',
+                            title: '请确定小组名称以及选中的小组成员',
+                        }, function(value, index, elem){
+                            alert(value);
+                            $.ajax({
+                                headers: {
+                                  "token" : localStorage.getItem("token")
+                                },
+                                type: "POST",
+                                dataType: "text",
+                                url: "../../dept/insert/" + value,
+                                success:function () {
+                                    alert("添加新分组成功！");
+                                    var str= '';
+                                    str += '<dd>';
+                                    str += '<a href=\'javascript:;\' class=\"site-url\" data-title=\"' + value + '\"  data-id=\"' +(500)+ '\"  data-url=\"pages/User/deptView.html?deptname=' + value + '\">';
+                                    str += value;
+                                    str += '</a>';
+                                    str += '</dd>';
+                                    console.log(str);
+                                    $("#dept-panel").html(str);
+                                    //location.reload();
+                                    parent.location.reload();
+                                    for (let i=0 ;i<data.length;i++){
+                                        data[i].dept = value;
+                                        $.ajax({
+                                            type: "POST",
+                                            dataType: "text",
+                                            url: "../../user/update",
+                                            data: data[i],
+                                            timeout: 2000,
+                                            success:function () {
+                                                //为什么进入不了success方法呢??
+                                            },
+                                            error:function () {
+                                                //guna
+                                            },
+                                            complete: function (XMLHttpRequest, status) {
+                                                if(status == 'timeout'){
+                                                    $.ajax().abort();
+                                                    layer.msg('当前网络不稳定！请检查网络连接状况！')
+                                                }
+                                            }
+                                        });
+                                    }
+                                    layer.close(index);//为什么进入不了success方法呢??
+                                },
+                                error:function (value, index) {
+                                    alert("添加新分组失败请重试！（分组名冲突或网络异常）")
+                                }
+                            });
+
+
+                        });
+                    }
+                    break;
+                case 'sendMessage':
+                    var data = checkStatus.data;
+                    if(data.length === 0){
+                        layer.msg('请至少选择一名成员发送消息！');
+                    }else {
+                        layer.prompt({
+                            formType: 2,
+                            value: '下午开会！',
+                            title: '消息内容',
+                        }, function(value, index, elem){
+                            //alert(value);
+                        });
+                    }
+                    break;
+                case 'setPassword':
+                    var data = checkStatus.data;
+                    if(data.length === 0){layer.msg("请至少选择一名成员")}else {
+                        layer.prompt({
+                            formType: 1,
+                            value: '',
+                            title: '请设置默认密码',
+                        },function (value, index, elem) {
+                            for (let i = 0; i< data.length; i++) {
+                                $.ajax({
+                                    type: 'post',
+                                    dataType: "text",
+                                    url: "../../user/setPassword/" + data[i].id,
+                                    data: {"id": data[i].id, "newPassword": value},
+                                    timeout: 2000,
+                                    success:function () {
+                                        layer.msg('修改成功！')//为什么进入不了success方法呢??
+                                    },
+                                    error:function () {
+                                        alert("设置失败！")//guna
+                                    },
+                                    complete: function (XMLHttpRequest, status) {
+                                        if(status == 'timeout'){
+                                            $.ajax().abort();
+                                            layer.msg('当前网络不稳定！请检查网络连接状况！')
+                                        }
+                                    }
+                                })
+                            }
+                        })
+                    }
+            }
+        });
+
+
+        $.fn.serializeObject = function() {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function() {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [ o[this.name] ];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+
+        //监听行工具事件
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'del'){
+                console.log(data.id);
+                layer.open({
+                    title:'友情提示',
+                    area: ['400px', '300px'],
+                    btnAlign: 'c',
+                    shadeClose: false,
+                    content: '确定要删除这条记录吗!?',
+                    btn:['确认删除' , '手滑了'],
+                    yes:function (index) {
+                        $.ajax({
+                            type: "GET",//方法类型
+                            dataType: "json",//预期服务器返回的数据类型
+                            url:"../../user/delete/" + data.id,
+                            success:function(){
+                                alert("");
+                            },
+                            error:function () {
+                                alert("");
+                            }
+                        });
+                        obj.del();
+                        layer.close(index);
+                    },
+                    no:function () {
+                        //取消提交后的回调函数
+                    }
+                });
+
+
+            } else if(obj.event === 'edit'){
+                console.log(data);
+                layer.open({
+                    title:'友情提示',
+                    area: ['400px', '300px'],
+                    btnAlign: 'c',
+                    shadeClose: false,
+                    content: '确定要更新这条记录吗!?',
+                    btn:['确认更新' , '手滑了'],
+                    yes:function (index) {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "json",
+                            url:"../../user/update",
+                            data:data,
+                            error:function () {
+                                alert("更新成功！");
+                            }
+                        });
+                        layer.close(index);
+                    },
+                    no:function () {
+                        //取消提交后的回调函数
+                    }
+                });
+                /*layer.prompt({
+                    formType: 2
+                    ,value: data.email
+                }, function(value, index){
+                    obj.update({
+                        email: value
+                    });
+                    layer.close(index);
+                });*/
+            }
+        });
+    });
+</script>
+</body>
+</html>

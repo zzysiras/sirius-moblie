@@ -1,0 +1,120 @@
+2019-03-31 21:44:19,192 [http-nio-8081-exec-1] ==>  Preparing: select * from labweb where name = ? 
+2019-03-31 21:44:19,225 [http-nio-8081-exec-1] ==> Parameters: banner(String)
+2019-03-31 21:44:19,258 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-31 21:44:21,611 [http-nio-8081-exec-3] ==>  Preparing: select count(1) from article t 
+2019-03-31 21:44:21,613 [http-nio-8081-exec-3] ==> Parameters: 
+2019-03-31 21:44:21,620 [http-nio-8081-exec-3] <==      Total: 1
+2019-03-31 21:44:21,623 [http-nio-8081-exec-3] ==>  Preparing: select * from article t 
+2019-03-31 21:44:21,624 [http-nio-8081-exec-3] ==> Parameters: 
+2019-03-31 21:44:21,630 [http-nio-8081-exec-3] <==      Total: 3
+2019-03-31 21:44:23,924 [http-nio-8081-exec-4] ==>  Preparing: select count(1) from videolist t 
+2019-03-31 21:44:23,925 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-31 21:44:23,929 [http-nio-8081-exec-4] <==      Total: 1
+2019-03-31 21:44:23,933 [http-nio-8081-exec-4] ==>  Preparing: select * from videolist t 
+2019-03-31 21:44:23,934 [http-nio-8081-exec-4] ==> Parameters: 
+2019-03-31 21:44:23,937 [http-nio-8081-exec-4] <==      Total: 3
+2019-03-31 21:45:18,909 [http-nio-8081-exec-5] ==>  Preparing: select count(1) from article t 
+2019-03-31 21:45:18,910 [http-nio-8081-exec-5] ==> Parameters: 
+2019-03-31 21:45:18,912 [http-nio-8081-exec-5] <==      Total: 1
+2019-03-31 21:45:18,914 [http-nio-8081-exec-5] ==>  Preparing: select * from article t 
+2019-03-31 21:45:18,915 [http-nio-8081-exec-5] ==> Parameters: 
+2019-03-31 21:45:18,922 [http-nio-8081-exec-5] <==      Total: 3
+2019-03-31 21:46:32,570 [http-nio-8081-exec-10] ==>  Preparing: select * from user where id=? 
+2019-03-31 21:46:32,571 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String)
+2019-03-31 21:46:32,577 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-31 21:46:32,584 [http-nio-8081-exec-10] ==>  Preparing: select distinct permission from permission p inner join role_permission rp on p.id = rp.permissionId inner join user_role ru on ru.roleid = rp.roleid where ru.userid = ? order by p.sort 
+2019-03-31 21:46:32,585 [http-nio-8081-exec-10] ==> Parameters: 2019223049266(String)
+2019-03-31 21:46:32,595 [http-nio-8081-exec-10] <==      Total: 13
+2019-03-31 21:46:32,722 [taskExecutor-1] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:46:32,727 [taskExecutor-1] ==> Parameters: 2019223049266(String), 登录(String), true(Boolean), null
+2019-03-31 21:46:32,740 [taskExecutor-1] <==    Updates: 1
+2019-03-31 21:46:33,204 [http-nio-8081-exec-4] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-31 21:46:33,205 [http-nio-8081-exec-4] ==> Parameters: 2019223049266(String)
+2019-03-31 21:46:33,217 [http-nio-8081-exec-4] <==      Total: 1
+2019-03-31 21:46:33,220 [http-nio-8081-exec-2] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-31 21:46:33,221 [http-nio-8081-exec-2] ==> Parameters: 2019223049266(String)
+2019-03-31 21:46:33,227 [http-nio-8081-exec-2] <==      Total: 1
+2019-03-31 21:46:33,228 [http-nio-8081-exec-2] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-31 21:46:33,229 [http-nio-8081-exec-2] ==> Parameters: 2019223049266(String), 182.149.194.254(String)
+2019-03-31 21:46:33,230 [http-nio-8081-exec-2] <==      Total: 0
+2019-03-31 21:46:33,240 [http-nio-8081-exec-2] ==>  Preparing: insert into user_ip (id, userip) values (?, ?) 
+2019-03-31 21:46:33,241 [http-nio-8081-exec-2] ==> Parameters: 2019223049266(String), 182.149.194.254(String)
+2019-03-31 21:46:33,248 [http-nio-8081-exec-2] <==    Updates: 1
+2019-03-31 21:46:33,249 [taskExecutor-2] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:46:33,257 [taskExecutor-2] ==> Parameters: 2019223049266(String), 退出(String), true(Boolean), null
+2019-03-31 21:46:33,265 [taskExecutor-2] <==    Updates: 1
+2019-03-31 21:46:33,267 [taskExecutor-3] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:46:33,269 [taskExecutor-3] ==> Parameters: 2019223049266(String), 异地登录(String), true(Boolean), null
+2019-03-31 21:46:33,280 [taskExecutor-3] <==    Updates: 1
+2019-03-31 21:46:53,108 [http-nio-8081-exec-1] ==>  Preparing: select * from user where id=? 
+2019-03-31 21:46:53,110 [http-nio-8081-exec-1] ==> Parameters: 2019223049266(String)
+2019-03-31 21:46:53,112 [http-nio-8081-exec-1] <==      Total: 1
+2019-03-31 21:46:53,114 [http-nio-8081-exec-1] ==>  Preparing: select distinct permission from permission p inner join role_permission rp on p.id = rp.permissionId inner join user_role ru on ru.roleid = rp.roleid where ru.userid = ? order by p.sort 
+2019-03-31 21:46:53,115 [http-nio-8081-exec-1] ==> Parameters: 2019223049266(String)
+2019-03-31 21:46:53,118 [http-nio-8081-exec-1] <==      Total: 13
+2019-03-31 21:46:53,229 [taskExecutor-4] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:46:53,230 [taskExecutor-4] ==> Parameters: 2019223049266(String), 登录(String), true(Boolean), null
+2019-03-31 21:46:53,235 [taskExecutor-4] <==    Updates: 1
+2019-03-31 21:46:53,456 [http-nio-8081-exec-6] ==>  Preparing: select count(1) from notice t left join notice_read r on r.noticeId = t.id and r.id = ? where t.status = 1 and r.id is null 
+2019-03-31 21:46:53,457 [http-nio-8081-exec-6] ==> Parameters: 2019223049266(String)
+2019-03-31 21:46:53,460 [http-nio-8081-exec-6] <==      Total: 1
+2019-03-31 21:46:53,461 [http-nio-8081-exec-7] ==>  Preparing: select count(1) from user_ip where id=? 
+2019-03-31 21:46:53,462 [http-nio-8081-exec-7] ==> Parameters: 2019223049266(String)
+2019-03-31 21:46:53,479 [http-nio-8081-exec-7] <==      Total: 1
+2019-03-31 21:46:53,482 [http-nio-8081-exec-7] ==>  Preparing: select * from user_ip where id=? and userip=? 
+2019-03-31 21:46:53,484 [http-nio-8081-exec-7] ==> Parameters: 2019223049266(String), 182.149.194.254(String)
+2019-03-31 21:46:53,493 [http-nio-8081-exec-7] <==      Total: 1
+2019-03-31 21:48:01,971 [http-nio-8081-exec-8] ==>  Preparing: select count(1) from file_info t 
+2019-03-31 21:48:01,972 [http-nio-8081-exec-8] ==> Parameters: 
+2019-03-31 21:48:01,978 [http-nio-8081-exec-8] <==      Total: 1
+2019-03-31 21:48:01,980 [http-nio-8081-exec-8] ==>  Preparing: select * from file_info t order by updateTime desc limit ?, ? 
+2019-03-31 21:48:01,981 [http-nio-8081-exec-8] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-31 21:48:01,990 [http-nio-8081-exec-8] <==      Total: 10
+2019-03-31 21:48:06,413 [http-nio-8081-exec-10] ==>  Preparing: select * from dict t where t.type = ? 
+2019-03-31 21:48:06,413 [http-nio-8081-exec-10] ==> Parameters: noticeStatus(String)
+2019-03-31 21:48:06,418 [http-nio-8081-exec-10] <==      Total: 2
+2019-03-31 21:48:06,478 [http-nio-8081-exec-8] ==>  Preparing: select count(1) from notice t 
+2019-03-31 21:48:06,479 [http-nio-8081-exec-8] ==> Parameters: 
+2019-03-31 21:48:06,483 [http-nio-8081-exec-8] <==      Total: 1
+2019-03-31 21:48:06,485 [http-nio-8081-exec-8] ==>  Preparing: select * from notice t order by updateTime desc, title desc limit ?, ? 
+2019-03-31 21:48:06,485 [http-nio-8081-exec-8] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-31 21:48:06,491 [http-nio-8081-exec-8] <==      Total: 6
+2019-03-31 21:48:14,690 [http-nio-8081-exec-10] ==>  Preparing: select * from file_info t where t.id = ? 
+2019-03-31 21:48:14,691 [http-nio-8081-exec-10] ==> Parameters: 586f83f4ccf0267cfeca056497370652(String)
+2019-03-31 21:48:14,692 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-31 21:48:14,698 [http-nio-8081-exec-10] ==>  Preparing: delete from file_info where id = ? 
+2019-03-31 21:48:14,699 [http-nio-8081-exec-10] ==> Parameters: 586f83f4ccf0267cfeca056497370652(String)
+2019-03-31 21:48:14,703 [taskExecutor-5] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:48:14,704 [taskExecutor-5] ==> Parameters: 2019223049266(String), 删除文件(String), true(Boolean), QQ截图20181107103528.png(String)
+2019-03-31 21:48:14,704 [http-nio-8081-exec-10] <==    Updates: 1
+2019-03-31 21:48:14,706 [taskExecutor-6] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:48:14,707 [taskExecutor-6] ==> Parameters: 2019223049266(String), 文件删除(String), true(Boolean), null
+2019-03-31 21:48:14,709 [taskExecutor-5] <==    Updates: 1
+2019-03-31 21:48:14,713 [taskExecutor-6] <==    Updates: 1
+2019-03-31 21:48:14,723 [http-nio-8081-exec-5] ==>  Preparing: select count(1) from file_info t 
+2019-03-31 21:48:14,724 [http-nio-8081-exec-5] ==> Parameters: 
+2019-03-31 21:48:14,726 [http-nio-8081-exec-5] <==      Total: 1
+2019-03-31 21:48:14,727 [http-nio-8081-exec-5] ==>  Preparing: select * from file_info t order by updateTime desc limit ?, ? 
+2019-03-31 21:48:14,729 [http-nio-8081-exec-5] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-31 21:48:14,732 [http-nio-8081-exec-5] <==      Total: 10
+2019-03-31 21:48:28,215 [http-nio-8081-exec-9] ==>  Preparing: select * from file_info t where t.id = ? 
+2019-03-31 21:48:28,215 [http-nio-8081-exec-9] ==> Parameters: 83651a345ddefb836a9e0fedbf1692b1(String)
+2019-03-31 21:48:28,217 [http-nio-8081-exec-9] <==      Total: 0
+2019-03-31 21:48:28,222 [taskExecutor-7] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:48:28,222 [http-nio-8081-exec-9] ==>  Preparing: insert into file_info(id, contentType, size, path, url, type, createTime, updateTime, originName) values(?, ?, ?, ?, ?, ?, now(), now(), ?) 
+2019-03-31 21:48:28,223 [taskExecutor-7] ==> Parameters: 2019223049266(String), 上传文件(String), true(Boolean), QQ截图20190331050840.png(String)
+2019-03-31 21:48:28,223 [http-nio-8081-exec-9] ==> Parameters: 83651a345ddefb836a9e0fedbf1692b1(String), image/png(String), 179501(Long), e:/files/2019/03/31/83651a345ddefb836a9e0fedbf1692b1.png(String), /2019/03/31/83651a345ddefb836a9e0fedbf1692b1.png(String), 1(Integer), QQ截图20190331050840.png(String)
+2019-03-31 21:48:28,230 [taskExecutor-7] <==    Updates: 1
+2019-03-31 21:48:28,231 [http-nio-8081-exec-9] <==    Updates: 1
+2019-03-31 21:48:28,232 [taskExecutor-8] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:48:28,233 [taskExecutor-8] ==> Parameters: 2019223049266(String), 文件上传(String), true(Boolean), null
+2019-03-31 21:48:28,238 [taskExecutor-8] <==    Updates: 1
+2019-03-31 21:48:28,249 [http-nio-8081-exec-10] ==>  Preparing: select count(1) from file_info t 
+2019-03-31 21:48:28,249 [http-nio-8081-exec-10] ==> Parameters: 
+2019-03-31 21:48:28,251 [http-nio-8081-exec-10] <==      Total: 1
+2019-03-31 21:48:28,252 [http-nio-8081-exec-10] ==>  Preparing: select * from file_info t order by updateTime desc limit ?, ? 
+2019-03-31 21:48:28,253 [http-nio-8081-exec-10] ==> Parameters: 0(Integer), 10(Integer)
+2019-03-31 21:48:28,256 [http-nio-8081-exec-10] <==      Total: 10
+2019-03-31 21:48:43,573 [taskExecutor-9] ==>  Preparing: insert into syslogs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2019-03-31 21:48:43,575 [taskExecutor-9] ==> Parameters: 2019223049266(String), 退出(String), true(Boolean), null
+2019-03-31 21:48:43,582 [taskExecutor-9] <==    Updates: 1

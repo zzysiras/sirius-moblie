@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cesaba.siriusmobliemain.mapper.DeptMapper" >
+
+    <sql id="Base_Column_List">
+        deptid, deptname, parentid
+    </sql>
+
+    <resultMap id="result" type="com.cesaba.siriusmobliemain.entity.Dept">
+        <result property="deptid" column="deptid" />
+        <result property="deptname" column="deptname" />
+        <result property="parentid" column="parentid" />
+    </resultMap>
+
+    <select id="selectAllDept" resultMap="result">
+        select
+        <include refid="Base_Column_List" />
+        from dept
+    </select>
+
+    <insert id="insertDept" parameterType="com.cesaba.siriusmobliemain.entity.Dept">
+    insert into dept (deptname, parentid)
+    values(
+      #{deptname,jdbcType=VARCHAR},
+      #{parentid,jdbcType=VARCHAR}
+      )
+     </insert>
+
+    <insert id="insertDeptByDeptName" keyProperty="deptid" useGeneratedKeys="true" parameterType="java.lang.String">
+    insert into dept(deptname) values(#{deptname,jdbcType=VARCHAR})
+     </insert>
+
+    <!--凡是自增ID记得加上keyProperty="" useGeneratedKeys="true"这条语句-->
+
+    <delete id="deleteDeptByDeptName" parameterType="java.lang.String" >
+    delete from dept
+    where deptname = #{deptname,jdbcType=VARCHAR}
+    </delete>
+
+    <update id="updateDept" parameterType="com.cesaba.siriusmobliemain.entity.Dept" >
+    update dept
+    set deptname = #{deptname,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=VARCHAR}
+    where deptname = #{deptname,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectByDeptName" resultMap="result" parameterType="java.lang.String" >
+        select * from dept
+        where dept = #{deptname,jdbcType=VARCHAR}
+    </select>
+
+
+
+
+</mapper>

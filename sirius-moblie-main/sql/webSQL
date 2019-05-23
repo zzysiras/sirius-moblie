@@ -1,0 +1,306 @@
+/*
+Source Server         : zzy
+Source Server Version : 50624
+Source Host           : localhost:3306
+Source Database       : labweb
+
+Target Server Type    : MYSQL
+Target Server Version : 50624
+File Encoding         : 65001
+
+ AUTO_INCREMENT主键自动增长
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+CREATE DATABASE  IF NOT EXISTS `labweb` DEFAULT CHARACTER SET utf8;
+USE `labweb`;
+
+SET NAMES utf8;
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `grade` varchar(8) DEFAULT NULL,
+  `id` varchar (30) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar (255) default 123456,
+  `fullorpart` varchar (50) DEFAULT NULL,
+  `acaorpro` varchar (50) DEFAULT NULL,
+  `major` varchar(50) DEFAULT NULL,
+  `sex` CHAR(2) DEFAULT NULL,
+  `phonenumber` varchar(11) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `headImgUrl` varchar (255) DEFAULT null ,
+  `dept` varchar(50) DEFAULT NULL,
+  `birthday` varchar (50)DEFAULT NULL,
+  `issuper` char (2) DEFAULT '否',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `roleid` int(11) default '0',
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `user` VALUES ('2018', '2018223049266', '张中洋', '$2a$10$4iB.at7hv4cqjuAV.MFOweQo3HKtx3l4f5fFYAYCYXKYGcRZAU7Li', '非全日制', '专硕', '软件工程', '男', '13228272552', 'zzysiras@foxmail.com', '','', '19941013', '是', '1', '0')
+INSERT INTO `user` VALUES ('2019', '2019223049266', '五月巡抚司s', '$10$4JBH.HXw2yu6wtAaIX//e.OIdO.026PmbYHMontM2gjX154gTs/OG', '非全日制', '专硕', '软件工程', '男', '13228272552', 'zzysiras@foxmail.com', '','', '19941013', '是', '0', '0')
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `roleid` int(11) NOT NULL AUTO_INCREMENT,
+  `rolename` varchar(50) NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `createTime` datetime NOT NULL,
+  `updateTime` datetime NOT NULL,
+  PRIMARY KEY (`roleid`),
+  UNIQUE KEY `rolename` (`rolename`)
+) ENGINE=InnoDB  AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `role` VALUES ('1', 'ADMIN', '管理员', '2017-05-01 13:25:39', '2017-10-05 21:59:18');
+INSERT INTO `role` VALUES ('2', 'USER', '普通用户', '2017-08-01 21:47:31', '2017-10-05 21:59:26');
+
+
+DROP TABLE IF EXISTS `user_role`;
+CREATE TABLE `user_role` (
+  `userid` varchar (30) DEFAULT NULL,
+  `roleid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`userid`, `roleid`)
+) ENGINE=InnoDB   DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `user_role` VALUES ('2019223049266', '2');
+INSERT INTO `user_role` VALUES ('2018223049266', '1');
+
+
+
+
+DROP TABLE IF EXISTS `role_permission`;
+CREATE TABLE `role_permission` (
+  `roleId` int(11) NOT NULL,
+  `permissionId` int(11) NOT NULL,
+  PRIMARY KEY (`roleId`,`permissionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO `role_permission` VALUES ('1', '1');
+INSERT INTO `role_permission` VALUES ('2', '1');
+INSERT INTO `role_permission` VALUES ('2', '2');
+INSERT INTO `role_permission` VALUES ('1', '2');
+INSERT INTO `role_permission` VALUES ('1', '3');
+INSERT INTO `role_permission` VALUES ('1', '4');
+INSERT INTO `role_permission` VALUES ('1', '6');
+INSERT INTO `role_permission` VALUES ('1', '7');
+INSERT INTO `role_permission` VALUES ('1', '8');
+INSERT INTO `role_permission` VALUES ('1', '9');
+INSERT INTO `role_permission` VALUES ('1', '10');
+INSERT INTO `role_permission` VALUES ('1', '11');
+INSERT INTO `role_permission` VALUES ('1', '12');
+INSERT INTO `role_permission` VALUES ('1', '13');
+INSERT INTO `role_permission` VALUES ('1', '14');
+INSERT INTO `role_permission` VALUES ('1', '15');
+INSERT INTO `role_permission` VALUES ('2', '3');
+INSERT INTO `role_permission` VALUES ('2', '4');
+INSERT INTO `role_permission` VALUES ('2', '6');
+INSERT INTO `role_permission` VALUES ('2', '7');
+INSERT INTO `role_permission` VALUES ('2', '8');
+INSERT INTO `role_permission` VALUES ('2', '9');
+INSERT INTO `role_permission` VALUES ('2', '10');
+INSERT INTO `role_permission` VALUES ('2', '11');
+INSERT INTO `role_permission` VALUES ('2', '12');
+INSERT INTO `role_permission` VALUES ('2', '13');
+INSERT INTO `role_permission` VALUES ('2', '14');
+INSERT INTO `role_permission` VALUES ('2', '15');
+
+
+
+
+DROP TABLE IF EXISTS `permission`;
+CREATE TABLE `permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parentId` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `permission` varchar(50) DEFAULT NULL,
+  `sort` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of sys_permission
+-- ----------------------------
+INSERT INTO `permission` VALUES ('1', '0', '用户管理', '1', 'sys:user:query', '1');
+INSERT INTO `permission` VALUES ('2', '1', '用户更新', '1', 'sys:user:update', '2');
+INSERT INTO `permission` VALUES ('3', '1', '用户删除', '2', 'sys:user:del', '3');
+INSERT INTO `permission` VALUES ('4', '0', '新增用户', '1', 'sys:user:add', '4');
+INSERT INTO `permission` VALUES ('6', '0', '修改密码','1', 'sys:user:password', '5');
+INSERT INTO `permission` VALUES ('7', '1', '部门管理','1', 'sys:dept:query', '6');
+INSERT INTO `permission` VALUES ('8', '7', '人员分组',  '1', 'sys:dept:add', '7');
+INSERT INTO `permission` VALUES ('9', '7', '删除部门',  '2', 'sys:menu:del', '8');
+INSERT INTO `permission` VALUES ('10', '8', '新增', '2', 'sys:menu:add', '100');
+INSERT INTO `permission` VALUES ('11', '8', '删除', '2', 'sys:menu:del', '100');
+INSERT INTO `permission` VALUES ('12', '7', '角色', '1', '', '7');
+INSERT INTO `permission` VALUES ('13', '12', '查询',  '2', 'sys:role:query', '100');
+INSERT INTO `permission` VALUES ('14', '12', '新增',  '2', 'sys:role:add', '100');
+INSERT INTO `permission` VALUES ('15', '12', '删除',  '2', 'sys:role:del', '100');
+
+DROP TABLE IF EXISTS `dept`;
+CREATE TABLE `dept`(
+  `deptid` int(11) NOT NULL auto_increment,
+  `deptname` varchar (255) NOT NULL,
+  `parentid` int (11) DEFAULT NULL,
+  primary key(`deptid`),
+  unique key `deptname`(`deptname`)
+)ENGINE=InnoDB auto_increment=1 CHARSET=utf8mb4;
+
+
+
+INSERT INTO `dept` VALUES ('1','java开发部','');
+INSERT INTO `dept` VALUES ('2','C++开发部','');
+INSERT INTO `dept`(deptname) VALUES ('C#开发部')
+
+/*DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` varchar (30) NOT NULL,
+  `inner_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `fullorpart` tinyint(1) DEFAULT NULL,
+  `acaorpro` tinyint(1) DEFAULT NULL,
+  `headImgUrl` varchar(255) DEFAULT NULL,
+  `grade` varchar(8) DEFAULT NULL,
+  `major` varchar(50) DEFAULT NULL,
+  `phonenumber` varchar(11) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `sex` tinyint(1) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `dept` varchar(50) DEFAULT NULL,
+  `issuper` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `inner_id` (`inner_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `user` VALUES ('2018223049266', '1', '张中洋', '123123', '0', '0','','2018','软件工程','13228272552','zzysiras@foxmail.com','1','19941013','web开发部','1');
+INSERT INTO `user` VALUES ('2019223049266', '2', '五月巡抚司', '123123', '0', '1','','2019','计算机技术','17783625751','zzy@foxmail.com','1','19951013','C++开发部','0'); */
+
+DROP TABLE IF EXISTS `notice`;
+CREATE TABLE `notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `content` text NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `createTime` datetime NOT NULL,
+  `updateTime` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `dict`;
+CREATE TABLE `dict` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(16) NOT NULL,
+  `k` varchar(16) NOT NULL,
+  `val` varchar(64) NOT NULL,
+  `createTime` datetime NOT NULL,
+  `updateTime` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `type` (`type`,`k`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `dict` VALUES ('1', 'sex', '0', '女', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+INSERT INTO `dict` VALUES ('2', 'sex', '1', '男', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+INSERT INTO `dict` VALUES ('3', 'userStatus', '0', '无效', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+INSERT INTO `dict` VALUES ('4', 'userStatus', '1', '正常', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+INSERT INTO `dict` VALUES ('5', 'userStatus', '2', '锁定', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+INSERT INTO `dict` VALUES ('6', 'noticeStatus', '0', '草稿', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+INSERT INTO `dict` VALUES ('7', 'noticeStatus', '1', '发布', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+INSERT INTO `dict` VALUES ('8', 'isRead', '0', '未读', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+INSERT INTO `dict` VALUES ('9', 'isRead', '1', '已读', '2018-11-17 09:58:24', '2018-11-18 14:21:05');
+
+
+DROP TABLE IF EXISTS `notice_read`;
+CREATE TABLE `notice_read` (
+  `noticeId` int(11) NOT NULL,
+  `id` varchar (50) NOT NULL,
+  `createTime` datetime NOT NULL,
+  PRIMARY KEY (`noticeId`,`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+DROP TABLE IF EXISTS `file_info`;
+CREATE TABLE `file_info` (
+  `id` varchar(32) NOT NULL COMMENT '文件md5',
+  `contentType` varchar(128) NOT NULL,
+  `size` int(11) NOT NULL,
+  `path` varchar(255) NOT NULL COMMENT '物理路径',
+  `url` varchar(1024) NOT NULL,
+  `type` int(1) NOT NULL,
+  `createTime` datetime NOT NULL,
+  `updateTime` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE `article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `content` text NOT NULL,
+  `type` varchar(128) NOT NULL,
+  `creator_id` varchar (30) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `createTime` datetime NOT NULL,
+  `updateTime` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `article_keyword`;
+CREATE TABLE `article_keyword` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `keyword` varchar (128) NOT NULL,
+  PRIMARY KEY (`id`,`keyword`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `labweb`;
+CREATE TABLE `labweb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar (128) NOT null ,
+  `ImgUrl`varchar (255) default null,
+  `path` VARCHAR (255) DEFAULT NULL,
+  `words` text default null,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+insert into `labweb` values ('1','banner', '/2019/01/24/banner.png', '','');
+insert into `labweb` values ('2','demo1', '/2019/01/24/demo1.png', '','记录实验室日常生活的点点滴滴');
+insert into `labweb` values ('3','demo2', '/2019/01/24/demo2.png','', '人工智能、人机交互、智慧教育、机器学习、数据挖掘……');
+insert into `labweb` values ('4','demo3', '/2019/01/24/demo3.JPG', '','全面发展的小团队!');
+insert into `labweb` values ('5','demo4', '/2019/01/24/demo4.jpg', '','实事求是精益求精');
+
+
+DROP TABLE IF EXISTS `user_ip`;
+CREATE TABLE `user_ip` (
+  `id` varchar (30) NOT NULL,
+  `userip` varchar (255) default NULL,
+  FOREIGN KEY (`id`) REFERENCES `user`(`id`),
+  PRIMARY KEY (`id`, `userip`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `videolist`;
+CREATE TABLE `videolist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `videoname` varchar (128) NOT null ,
+  `url`varchar (255) default null,
+  `path` VARCHAR (255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `syslogs`;
+CREATE TABLE `syslogs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` varchar(255) NOT NULL,
+  `module` varchar(50) DEFAULT NULL COMMENT '模块名',
+  `flag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '成功失败',
+  `remark` text COMMENT '备注',
+  `createTime` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`),
+  KEY `createTime` (`createTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

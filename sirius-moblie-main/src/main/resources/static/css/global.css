@@ -1,0 +1,65 @@
+/* 头部 */admin-side-toggle
+.header{height: 65px; border-bottom: 1px solid #404553;  background-color: #393D49; color: #fff;}
+.logo{position: absolute; left: 0; top: 18px;}
+.logo img{width: 82px; height: 31px;}
+
+.header .layui-nav{position: absolute; right: 0; top: 0; padding: 0; background: none;}
+.header .layui-nav .layui-nav-item{margin: 0 20px; line-height: 66px;}
+
+
+.header-index{background-color: #080018; border: none;}
+
+.layui-layout-admin .header-demo{border-bottom-color: #1AA094; background-color: #fff;}
+.header-demo .logo{left: 40px;}
+.header-demo .layui-nav{top: 0;}
+.header-demo .layui-nav .layui-nav-item{margin: 0 10px; line-height: 65px;}
+.header-demo .layui-nav .layui-nav-item a{color: #999;}
+.header-demo .layui-nav .layui-this{background-color: #f2f2f2;}
+.header-demo .layui-nav .layui-nav-item a:hover, 
+.header-demo .layui-nav .layui-this a{color: #000;}
+.header-demo .layui-nav .layui-this:after, 
+.header-demo .layui-nav-bar{background-color: #393D49;}
+.header-demo .layui-nav .layui-this a{padding: 0 20px;}
+
+
+
+
+
+
+/* 自定义css */
+.admin-header-item-mobile{
+	position: absolute; right: 0px; height: 70px;line-height: 70px;
+	padding: 0 20px; text-align: center; top:0;
+	display: none;
+}
+
+
+.admin-header-user img{
+	width: 40px; height: 40px; border-radius: 100%;
+	/*position: relative;
+    top: 15px;*/
+}
+.admin-header-user .layui-nav-more{
+	top:33px;
+}
+.admin-header-user .layui-nav-mored{
+	top: 26px;
+}
+
+/*lock*/
+.admin-header-lock{
+	width: 320px; height: 150px; padding: 20px; position: relative; text-align: center;
+}
+.admin-header-lock-img{
+	width: 60px; height: 60px; margin: 0 auto;
+}
+.admin-header-lock-img img{
+	width: 60px; height: 60px; border-radius: 100%;
+}
+.admin-header-lock-name{
+	color: #009688;margin: 8px 0 15px 0;
+}
+.admin-header-lock-input{
+	width: 150px; color: #FFFFFF; height: 30px; border: 0;background-color: #009688; padding: 0 7px; border-radius: 2px;
+}
+

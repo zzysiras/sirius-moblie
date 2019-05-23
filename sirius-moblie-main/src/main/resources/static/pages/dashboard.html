@@ -1,0 +1,206 @@
+`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../css/css/global.css" media="all" />
+    <script type="text/javascript" src="../layui/layui.js"></script>
+</head>
+
+<body>
+<div style="margin: 10px 20px 10px 20px;">
+<ul class="layui-timeline">
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">2019年1月20日</h3>
+            <img src="/user/verify" style="margin-left: 30px;">
+            <p>
+                发布了管理系统4.0版本
+                <br>发布文件管理系统原始版本
+                <br>头像上传
+                <br>swagger接口文档完成
+                <br>下载读取功能研究中<i class="layui-icon"></i>
+            </p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">12月29日</h3>
+            <p>
+                发布了管理系统3.0版本
+                <br>发布公告系统
+                <br>文件系统准备中<i class="layui-icon"></i>
+            </p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">12月16日</h3>
+            <p>
+                发布了管理系统2.1版本
+                <br>进化权限管理系统
+                <br>细化到按钮url级别颗粒<i class="layui-icon"></i>
+            </p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">12月8日</h3>
+            <p>
+                发布了管理系统2.0版本
+                <br>修复了几个Bug 优化了使用界面
+                <br>新增自动分组功能<i class="layui-icon"></i>
+            </p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">12月1日</h3>
+            <p>发布了管理系统1.0版本</p>
+            <ul>
+                <li>人员管理系统上线</li>
+                <li>基本架构完成</li>
+            </ul>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">11月24日</h3>
+            <p>
+                发布管理系统原型
+                <br>人员管理
+                <br>自动分组
+                <br>消息系统 文件上传
+                <br>网站维护
+            </p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <div class="layui-timeline-title">从这里开始</div>
+        </div>
+    </li>
+</ul>
+
+
+
+</div>
+
+<div class="layui-progress layui-progress-big" lay-showPercent="true">
+    <div class="layui-progress-bar" lay-percent="20%"></div>
+</div>
+
+<br style="height: 5px">
+
+<div class="layui-progress layui-progress-big" lay-showPercent="true">
+    <div class="layui-progress-bar layui-bg-orange" lay-percent="50%"></div>
+</div>
+
+<br style="height: 5px">
+
+<div class="layui-progress layui-progress-big" lay-showPercent="true">
+    <div class="layui-progress-bar layui-bg-blue" lay-percent="80%"></div>
+</div>
+
+
+<!--div class="admin-main">
+    <blockquote class="layui-elem-quote">
+        <fieldset class="layui-elem-field">
+            <legend>整体框架说明：</legend>
+            <div class="layui-field-box">
+                <p>
+                    <span class="layui-badge-dot"></span>springboot
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>spring security 全注解式的权限管理
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>动态配置权限，角色和资源，权限控制到按钮粒度
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>采用token进行权限校验，禁用session，未登录返回401，权限不足返回403
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>采用redis存储token及权限信息
+                </p>
+            </div>
+        </fieldset>
+    </blockquote>
+    <blockquote class="layui-elem-quote">
+        <fieldset class="layui-elem-field">
+            <legend>主要功能：</legend>
+            <div class="layui-field-box">
+                <p>
+                    <span class="layui-badge-dot"></span>用户管理：用户查询、添加用户、修改用户、给用户分配角色
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>菜单管理：菜单列表、添加菜单、修改菜单、删除菜单、权限配置、菜单图标设置、菜单排序
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>角色管理：角色查询、添加角色、修改角色、删除角色
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>数据源监控：druid
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>邮件管理：发送邮件、搜索邮件
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>文件管理：上传文件、文件列表、文件删除
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>公告管理：公告未读提醒、发布公告、查询公告、公告阅读人列表
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>个人信息修改
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>修改密码
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>头像修改
+                </p>
+            </div>
+        </fieldset>
+    </blockquote>
+    <blockquote class="layui-elem-quote">
+        <fieldset class="layui-elem-field">
+            <legend>其他说明：</legend>
+            </h2>
+            <div class="layui-field-box"
+                 style="margin: 0.0px; padding: 10.0px 15.0px; color: #000000; background-color: #f2f2f2;">
+                <p>
+                    <span class="layui-badge-dot"></span>日志模块
+                </p>
+                <p>&nbsp;&nbsp;&nbsp; sl4j日志</p>
+                <p>&nbsp;&nbsp;&nbsp; 日志表：使用aop拦截实现</p>
+                <p>
+                    <span class="layui-badge-dot"></span>权限控制：基于token方式，禁用session
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>简单sql采用注解，复杂sql采用Mapper.xml配置
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>使用了layui的弹出层、菜单、文件上传、富文本编辑、日历、选项卡、数据表格等
+                </p>
+                <p>
+                    <span class="layui-badge-dot"></span>表单数据采用bootstrapValidator校验
+                </p>
+        </fieldset>
+    </blockquote>
+</div-->
+</body>
+<script>
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+</script>
+</html>

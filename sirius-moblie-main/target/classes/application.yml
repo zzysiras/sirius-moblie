@@ -1,0 +1,89 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+
+  mail:
+    username: 349882124@qq.com
+    password: ppubmbkthszucaai
+    host: smtp.qq.com
+    default-encoding: UTF-8
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/labweb?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123123
+    #type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      stat-view-servlet:
+        allow: 127.0.0.1
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 10s
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: 1ms
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml  #对应mapper映射xml文件的所在路径
+  type-aliases-package: com.cesaba.siriusmobliemain.entity  #对应实体类的路径
+
+
+token:
+  expire:
+    seconds: 7200
+  jwtSecret: (ZZY:)_$^11244^%$_(ZZY:)_@@++--(ZZY:)_++++_.sds_(ZZY:)
+
+files:
+  path: ${file-path:e:/files}
+
+mail:
+  fromMail:
+    addr: 349882124@qq.com
+
+#jwt:
+  #header: Authorization
+  #secret: mySecret
+  #expiration: 604800 #七天
+  #tokenHead: "Bearer"
+
+
+
+logging:
+  config: classpath:logback.xml
+
+log:
+  level:
+    root: info
+    my: debug
+  file: logs/admin-server.log
+  maxsize: 30MB
+
+

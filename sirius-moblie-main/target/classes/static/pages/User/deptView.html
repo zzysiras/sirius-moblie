@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+    <script src="../../libs/jquery.min.js"></script>
+    <script type="text/javascript" src="../../labweb/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../../layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../js/labjs.js"></script>
+    <script src="../../labweb/vue.js" type="text/javascript"></script>
+    <script src="../../libs/vue.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
+<div class="layui-colla-content layui-show"><script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="sendMessage">发送消息</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="delDept">删除分组</button>
+    </div>
+</script>
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">更新</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <script src="../../layui/layui.js" charset="utf-8"></script>
+
+</div>
+
+
+
+
+
+
+<script>
+    C1=window.location.href.split("?")[1];
+    C2=C1.split("=")[1];
+    var info = decodeURI(C2);
+
+    function getParam(){
+        C1=window.location.href.split("?")[1];
+        C2=C1.split("=")[1];
+        var info = decodeURI(C2);
+        alert(info);
+    }
+
+    getParam();
+
+    layui.use('element', function(){
+        var element = layui.element;
+        var active={
+            tabAdd:function(url,id,name){
+                element.tabAdd('content',{
+                    title:name,
+                    content:'<iframe data-frameid="'+id+'" scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;"></iframe>',
+                    id:id
+                });
+                rightMenu();
+                iframeWH();
+            },
+            tabChange:function(id){
+                element.tabChange('content',id);
+            },
+            tabDelete:function(id){
+                element.tabDelete('content',id);
+            },
+            tabDeleteAll:function(ids){
+                $.each(ids,function(index,item){
+                    element.tabDelete('content',item);
+                });
+            }
+        };
+
+        //…
+    });
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+            ,type: 'GET'
+            ,url:'/user/select/'+info
+            ,toolbar: '#toolbarDemo'
+            //,contentType:'application/json'
+            ,title: '用户数据表'
+            ,cellMinWidth:100
+            /*,data: [{
+                "grade": "2018"
+                ,"id": "2018223049266"
+                ,"username": "张中洋"
+                ,"fullorpart":"非全"
+                ,"acaorpro":"专硕"
+                ,"major":"软件工程"
+                ,"sex": "男"
+                ,"phonenumber": "13228172552"
+                ,"email": "zzysiras@foxmail.com"
+                ,"dept":"XX开发组"
+                ,"issuper": "是"
+            },{
+                "grade": "2018"
+                ,"id": "20182230XXXXX"
+                ,"username": "尹浩"
+                ,"fullorpart":"全日"
+                ,"acaorpro":"专硕"
+                ,"major":"计算机技术"
+                ,"sex": "男"
+                ,"phonenumber": "XXXXXXXXXXXX"
+                ,"email": "XXXXXXXXXXX@foxmail.com"
+                ,"dept":"XX开发组"
+                ,"issuper": "否"
+            }]*/
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{field:'grade',title:'年级',fixed:'left',width:100, edit: 'text',sort:true,unresize: true}
+                ,{field:'id', title:'学号/工号',width:150,unresize: true}
+                ,{field:'username', title:'姓名',width:100, edit: 'text',unresize: true}
+                ,{field:'fullorpart', title:'全日/非全',width:100, edit: 'text',unresize: true}
+                ,{field:'acaorpro', title:'学硕/专硕',width:100, edit: 'text',unresize: true}
+                ,{field:'major', title:'专业', edit: 'text',width:150,}
+                ,{field:'sex', title:'性别',width:100, edit: 'text',unresize: true}
+                ,{field:'phonenumber',title:'联系电话',width:150, edit: 'text',unresize: true}
+                ,{field:'email', title:'邮箱', width:200, edit:'text',}
+                ,{field:'dept', title:'所属分组', edit: 'text'}
+                ,{field:'issuper',title:'超级用户',width:100, edit: 'text',unresize: true}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+            ]]
+            ,page: true
+        });
+
+        //头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+                case 'sendMessage':
+                    var data = checkStatus.data;
+                    if(data.length === 0){
+                        layer.msg('请至少选择一名成员发送消息！');
+                    }else {
+                        layer.prompt({
+                            formType: 2,
+                            value: '下午开会！',
+                            title: '消息内容',
+                        }, function(value, index, elem){
+                            //alert(value);
+                        });
+                    }
+
+                    break;
+                case  'delDept' :
+                    var data = checkStatus.data;
+                    layer.prompt({
+                        formType: 2,
+                        value: info,
+                        title: '请确定是否要删除该分组',
+                    }, function(value, index, elem){
+                        alert(value);
+                        $.ajax({
+                            type: "GET",
+                            dataType: "text",
+                            url: "../../dept/delete/" + value,
+                            success:function () {
+                                alert("删除分组成功！");
+                                layer.close(index);
+                                for(let i=0 ;i<data.length ; i++){
+                                    data[i].dept = "无";
+                                }
+                                parent.location.reload();
+                                //这里差个批量更新操作
+                            },
+                            error:function (value, index) {
+                                alert("删除分组失败请重试")
+                            }
+                        });
+                    });
+            }
+        });
+
+
+        $.fn.serializeObject = function() {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function() {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [ o[this.name] ];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+
+        //监听行工具事件
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'del'){
+                console.log(data.id);
+                layer.open({
+                    title:'友情提示',
+                    area: ['400px', '300px'],
+                    btnAlign: 'c',
+                    shadeClose: false,
+                    content: '确定要删除这条记录吗!?',
+                    btn:['确认删除' , '手滑了'],
+                    yes:function (index) {
+                        $.ajax({
+                            type: "GET",//方法类型
+                            dataType: "json",//预期服务器返回的数据类型
+                            url:"../../user/delete/" + data.id,
+                            success:function(){
+                                alert("");
+                            },
+                            error:function () {
+                                alert("");
+                            }
+                        });
+                        obj.del();
+                        layer.close(index);
+                    },
+                    no:function () {
+                        //取消提交后的回调函数
+                    }
+                });
+
+
+            } else if(obj.event === 'edit'){
+                console.log(data);
+                layer.open({
+                    title:'友情提示',
+                    area: ['400px', '300px'],
+                    btnAlign: 'c',
+                    shadeClose: false,
+                    content: '确定要更新这条记录吗!?',
+                    btn:['确认更新' , '手滑了'],
+                    yes:function (index) {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "json",
+                            url:"../../user/update",
+                            data:data,
+                            error:function () {
+                                alert("更新成功！");
+                            }
+                        });
+                        layer.close(index);
+                    },
+                    no:function () {
+                        //取消提交后的回调函数
+                    }
+                });
+                /*layer.prompt({
+                    formType: 2
+                    ,value: data.email
+                }, function(value, index){
+                    obj.update({
+                        email: value
+                    });
+                    layer.close(index);
+                });*/
+            }
+        });
+    });
+</script>
+</body>
+</html>
